@@ -1,10 +1,18 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-public class Permissao {
+import javax.persistence.*;
 
+@Entity
+public class Permissao {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codigoPermissao;
     private String nomePermissao;
 
+
+
+    @OneToOne
+    private Master master;
     public String getCodigoPermissao() {
         return codigoPermissao;
     }
@@ -16,5 +24,13 @@ public class Permissao {
     }
     public void setNomePermissao(String nomePermissao) {
         this.nomePermissao = nomePermissao;
+    }
+
+    public Master getMaster() {
+        return master;
+    }
+
+    public void setMaster(Master master) {
+        this.master = master;
     }
 }

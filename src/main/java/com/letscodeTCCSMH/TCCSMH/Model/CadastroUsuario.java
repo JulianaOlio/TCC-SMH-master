@@ -12,7 +12,7 @@ public class CadastroUsuario {
 
     private String nomeCompleto;
     private String codigoFuncional;
-    private String telefone; //verificar se precisa uma classe apartada do telefone.
+    private String telefone; //verificar se precisa uma classe apartada do telefone. se criar a lista precisaremos criar classe telefone
 
     @OneToOne
     private Endereco endereco;

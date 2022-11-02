@@ -1,20 +1,36 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Requisicao {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDateTime dataInicio;
     private LocalDateTime dataFinal;
     private String motivo;
     private String headset;
 
+    @OneToOne
+    @JoinColumn(name = "status_id")
     private Status status; // verificar se criamos a lista
 
-    private Usuario requisicaoPorUsuario;
+    @OneToOne
+    @JoinColumn(name = "status_requisicao_id")
     private Status statusRequisicao;
+    @OneToOne
+    @JoinColumn
     private Master aprovadorRequisicao;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;
@@ -55,15 +71,6 @@ public class Requisicao {
     public void setHeadset(String headset) {
         this.headset = headset;
     }
-
-    public Usuario getRequisicaoPorUsuario() {
-        return requisicaoPorUsuario;
-    }
-
-    public void setRequisicaoPorUsuario(Usuario requisicaoPorUsuario) {
-        this.requisicaoPorUsuario = requisicaoPorUsuario;
-    }
-
     public Status getStatusRequisicao() {
         return statusRequisicao;
     }

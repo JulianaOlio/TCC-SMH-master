@@ -1,14 +1,16 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class PerfilAcesso {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String nome;
     private String descricao;
+
 
     @OneToOne
     private CadastroUsuario cadastroUsuario;
@@ -22,16 +24,14 @@ public class PerfilAcesso {
     public String getDescricao() {
         return descricao;
     }
-
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public List<Permissao> getPermissao() {
-        return permissao;
+    public CadastroUsuario getCadastroUsuario() {
+        return cadastroUsuario;
     }
 
-    public void setPermissao(List<Permissao> permissao) {
-        this.permissao = permissao;
+    public void setCadastroUsuario(CadastroUsuario cadastroUsuario) {
+        this.cadastroUsuario = cadastroUsuario;
     }
 }
