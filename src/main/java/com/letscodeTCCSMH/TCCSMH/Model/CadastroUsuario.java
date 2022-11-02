@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-//TESTEEEEE
+
 
 @Entity
 public class CadastroUsuario {
