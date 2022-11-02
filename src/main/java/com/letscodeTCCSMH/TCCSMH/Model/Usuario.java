@@ -1,6 +1,6 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-public class Usuario extends cadastroUsuario{
+public class Usuario extends CadastroUsuario {
 
     private Endereco endereco;
 

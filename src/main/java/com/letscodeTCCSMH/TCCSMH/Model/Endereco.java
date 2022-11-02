@@ -1,7 +1,14 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-public class Endereco {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+class Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String tipoLogradouro;
     private String logradouro;
@@ -15,19 +22,15 @@ public class Endereco {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
     public String getTipoLogradouro() {
         return tipoLogradouro;
     }
-
     public void setTipoLogradouro(String tipoLogradouro) {
         this.tipoLogradouro = tipoLogradouro;
     }
-
     public String getLogradouro() {
         return logradouro;
     }
@@ -80,7 +83,8 @@ public class Endereco {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(String estado)
+    {
         this.estado = estado;
     }
 }

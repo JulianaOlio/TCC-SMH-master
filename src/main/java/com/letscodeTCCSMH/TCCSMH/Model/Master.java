@@ -1,14 +1,14 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-public class Master extends cadastroUsuario {
+public class Master extends CadastroUsuario {
 
-    private perfilAcesso perfilAcesso;
+    private PerfilAcesso perfilAcesso;
 
-    public com.letscodeTCCSMH.TCCSMH.Model.perfilAcesso getPerfilAcesso() {
+    public PerfilAcesso getPerfilAcesso() {
         return perfilAcesso;
     }
 
-    public void setPerfilAcesso(com.letscodeTCCSMH.TCCSMH.Model.perfilAcesso perfilAcesso) {
+    public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
         this.perfilAcesso = perfilAcesso;
     }
 }

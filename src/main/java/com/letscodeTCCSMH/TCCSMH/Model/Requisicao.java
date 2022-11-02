@@ -10,6 +10,8 @@ public class Requisicao {
     private String motivo;
     private String headset;
 
+    private Status status; // verificar se criamos a lista
+
     private Usuario requisicaoPorUsuario;
     private Status statusRequisicao;
     private Master aprovadorRequisicao;

@@ -1,26 +1,33 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
-public class cadastroUsuario{
+public class CadastroUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id_Email;
 
-    private String email;
     private String nomeCompleto;
     private String codigoFuncional;
     private String telefone; //verificar se precisa uma classe apartada do telefone.
 
-    public String getEmail() {
-        return email;
+    @OneToOne
+    private Endereco endereco;
+
+    @OneToOne
+    @JoinColumn (name = "id_perfilacesso")
+    @JsonIgnore
+    private PerfilAcesso perfilAcesso;
+
+    public String getid_Email() {
+        return id_Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId_Email(String email) {
+        this.id_Email = email;
     }
 
     public String getNomeCompleto() {
