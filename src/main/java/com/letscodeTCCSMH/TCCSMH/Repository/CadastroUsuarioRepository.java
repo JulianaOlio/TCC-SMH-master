@@ -9,7 +9,6 @@ public interface CadastroUsuarioRepository extends JpaRepository <CadastroUsuari
 
 
   
-    List<CadastroUsuario> findByNome(String nome);
 
     void save();
 
