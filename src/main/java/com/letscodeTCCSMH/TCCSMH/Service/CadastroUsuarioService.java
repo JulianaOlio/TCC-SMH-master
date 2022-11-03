@@ -12,7 +12,12 @@ public class CadastroUsuarioService {
     private CadastroUsuarioRepository cadastroUsuarioRepository;
 
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
-       cadastroUsuarioRepository.save();
+        cadastroUsuarioRepository.save();
+    }
+
+    public CadastroUsuario listarCadastroUsuario(String nomeCompleto){
+        return cadastroUsuarioRepository.findAll(nomeCompleto);
+
     }
 
     public CadastroUsuario buscarCadastroUsuario(String codigoFuncional) {

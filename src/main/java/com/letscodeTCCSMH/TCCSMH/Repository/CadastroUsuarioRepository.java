@@ -6,15 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CadastroUsuarioRepository extends JpaRepository <CadastroUsuarioRepository,Integer> {
-
-
-  
-
     void save();
 
     CadastroUsuario findBycodigoFuncional(String codigoFuncional);
-
-
     void delete();
+
+    CadastroUsuario findAll(String nomeCompleto);
 }
 

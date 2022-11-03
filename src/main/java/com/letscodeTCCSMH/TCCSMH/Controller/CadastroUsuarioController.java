@@ -42,6 +42,11 @@ public class CadastroUsuarioController {
         return cadastroUsuarioService.buscarCadastroUsuario(codigoFuncional);
     }
 
+    @GetMapping("/{nomeCompleto}")
+    public CadastroUsuario listarUsuarioPorNome(@PathVariable String nomeCompleto){
+        return cadastroUsuarioService.listarCadastroUsuario(nomeCompleto);
+    }
+
     @PutMapping("/{codigoFuncional}")
     public String atualizarCadastroUsuario(@PathVariable String codigoFuncional, @RequestBody CadastroUsuario cadastroUsuario) {
         boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(codigoFuncional, cadastroUsuario);
