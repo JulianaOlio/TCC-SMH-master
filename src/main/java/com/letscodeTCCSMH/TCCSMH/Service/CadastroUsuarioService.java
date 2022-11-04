@@ -22,23 +22,25 @@ public class CadastroUsuarioService {
 
     }
 
-    public CadastroUsuario buscarCadastroUsuario(String codigoFuncional) {
-        return cadastroUsuarioRepository.findBycodigoFuncional(codigoFuncional);
+    public CadastroUsuario buscarCadastroUsuario(String id_Email) {
+        return cadastroUsuarioRepository.findByid_Email(id_Email);
     }
 
-    public boolean atualizarCadastroUsuario(String codigoFuncional,CadastroUsuario cadastroUsuario) {
-        CadastroUsuario cadastroUsuarioBD = cadastroUsuarioRepository.findBycodigoFuncional(codigoFuncional);
+    public boolean atualizarCadastroUsuario(String id_Email,CadastroUsuario cadastroUsuario) {
+        CadastroUsuario cadastroUsuarioBD = cadastroUsuarioRepository.findByid_Email(id_Email);
         if (cadastroUsuario != null) {
             cadastroUsuarioBD.setNomeCompleto(cadastroUsuario.getNomeCompleto());
+            cadastroUsuarioBD.setCodigoFuncional(cadastroUsuario.getCodigoFuncional());
             cadastroUsuarioBD.setEndereco(cadastroUsuario.getEndereco());
+            cadastroUsuarioBD.setTelefone(cadastroUsuario.getTelefone());
             cadastroUsuarioRepository.save();
             return true;
         }
         return false;
     }
 
-    public boolean excluirCadastroUsuario(String codigoFuncional) {
-        CadastroUsuario cadastroUsuario = cadastroUsuarioRepository.findBycodigoFuncional(codigoFuncional);
+    public boolean excluirCadastroUsuario(String id_Email) {
+        CadastroUsuario cadastroUsuario = cadastroUsuarioRepository.findBycodigoFuncional(id_Email);
         if (cadastroUsuario != null) {
             cadastroUsuarioRepository.delete();
             return true;
@@ -46,9 +48,9 @@ public class CadastroUsuarioService {
         return false;
     }
 
-    public List<CadastroUsuarioRepository> listarCadastroUsuarios(String codigoFuncional) {
-        if (codigoFuncional != null) {
-            return cadastroUsuarioRepository.findBycodigoFuncional();
+    public List<CadastroUsuarioRepository> listarCadastroUsuarios(String nomeCompleto) {
+        if (nomeCompleto != null) {
+            return cadastroUsuarioRepository.findBynomeCompleto();
         } else {
            return cadastroUsuarioRepository.findAll();
         }

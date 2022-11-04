@@ -21,47 +21,49 @@ public class CadastroUsuarioController {
             return "O nome do usuário é obrigatório";
         }
 
+        if (cadastroUsuario.getCodigoFuncional() == null ||cadastroUsuario.getCodigoFuncional().equals("")) {
+            return "O código funcionsl é obrigatório";
+        }
         if (cadastroUsuario.getTelefone() == null ||cadastroUsuario.getTelefone().equals("")) {
             return "O telefone é obrigatório";
         }
-
         if (cadastroUsuario.getEndereco() == null) {
             return "O Endereço é obrigatório";
 
         }
         CadastroUsuario cadastroUsuarioBD =
-                cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getCodigoFuncional());
+                cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getid_Email());
         if (cadastroUsuarioBD != null) {
-            return "Código funcional já cadastrado.";
+            return "E-mail já cadastrado.";
         }
 
         cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
         return "Cadastro realizado com sucesso!";
     }
 
-    //localhost:8080/cadastro/1234567
-    @GetMapping("/{codigoFuncional}")
-    public CadastroUsuario getcadastroUsuario(@PathVariable String codigoFuncional){
-        return cadastroUsuarioService.buscarCadastroUsuario(codigoFuncional);
+    //localhost:8080/cadastro/abc@gmail.com
+    @GetMapping("/{id_Email}")
+    public CadastroUsuario buscacadastroUsuario(@PathVariable String id_Email){
+        return cadastroUsuarioService.buscarCadastroUsuario(id_Email);
     }
 
-    @GetMapping("/{nomeCompleto}")
-    public CadastroUsuario buscarCadastroPorNome(@PathVariable String nomeCompleto){
+    @GetMapping("/nomeCompleto")
+    public CadastroUsuario buscaCadastroPorNome(@RequestBody String nomeCompleto){
         return cadastroUsuarioService.buscarCadastroPorNome(nomeCompleto);
     }
 
-    @PutMapping("/{codigoFuncional}")
-    public String atualizarCadastroUsuario(@PathVariable String codigoFuncional, @RequestBody CadastroUsuario cadastroUsuario) {
-        boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(codigoFuncional, cadastroUsuario);
+    @PutMapping("/{id_Email}")
+    public String atualizaCadastroUsuario(@PathVariable String id_Email, @RequestBody CadastroUsuario cadastroUsuario) {
+        boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(id_Email, cadastroUsuario);
         if (atualizado) {
         return "Cadastro do usuário atualizado com sucesso";
     }
         return "Cadastro do usuário não encontrado";
     }
 
-    @DeleteMapping("/{codigoFuncional}")
-    public String deletarCadastroUsuario(@PathVariable String codigoFuncional) {
-        boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(codigoFuncional);
+    @DeleteMapping("/{id_Email}")
+    public String deletaCadastroUsuario(@PathVariable String id_Email) {
+        boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(id_Email);
         if (deletado) {
             return "Cadastro do usuário excluído com sucesso!";
         }
@@ -70,7 +72,7 @@ public class CadastroUsuarioController {
 
     @GetMapping
     public List<CadastroUsuarioRepository> listarCadastroUsuarios(
-            @RequestParam(name = "código Funcional", required = false) String codigoFuncional) {
-            return cadastroUsuarioService.listarCadastroUsuarios(codigoFuncional);
+            @RequestParam(name = "Nomes dos Usuários", required = false) String nomeCompleto) {
+            return cadastroUsuarioService.listarCadastroUsuarios(nomeCompleto);
     }
     }
