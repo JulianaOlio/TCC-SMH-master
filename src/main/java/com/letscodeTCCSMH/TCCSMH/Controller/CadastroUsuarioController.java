@@ -1,9 +1,12 @@
 package com.letscodeTCCSMH.TCCSMH.Controller;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
+import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 import com.letscodeTCCSMH.TCCSMH.Service.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/cadastro")
@@ -43,8 +46,8 @@ public class CadastroUsuarioController {
     }
 
     @GetMapping("/{nomeCompleto}")
-    public CadastroUsuario listarUsuarioPorNome(@PathVariable String nomeCompleto){
-        return cadastroUsuarioService.listarCadastroUsuario(nomeCompleto);
+    public CadastroUsuario buscarCadastroPorNome(@PathVariable String nomeCompleto){
+        return cadastroUsuarioService.buscarCadastroPorNome(nomeCompleto);
     }
 
     @PutMapping("/{codigoFuncional}")
@@ -63,5 +66,11 @@ public class CadastroUsuarioController {
             return "Cadastro do usuário excluído com sucesso!";
         }
         return "Cadastro do usuário não encontrado.";
+    }
+
+    @GetMapping
+    public List<CadastroUsuarioRepository> listarCadastroUsuarios(
+            @RequestParam(name = "código Funcional", required = false) String codigoFuncional) {
+            return cadastroUsuarioService.listarCadastroUsuarios(codigoFuncional);
     }
     }

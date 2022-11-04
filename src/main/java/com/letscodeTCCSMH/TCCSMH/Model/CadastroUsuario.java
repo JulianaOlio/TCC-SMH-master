@@ -1,13 +1,14 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
-public class CadastroUsuario {
+public class CadastroUsuario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id_Email;

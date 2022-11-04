@@ -5,6 +5,8 @@ import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CadastroUsuarioService {
 
@@ -15,7 +17,7 @@ public class CadastroUsuarioService {
         cadastroUsuarioRepository.save();
     }
 
-    public CadastroUsuario listarCadastroUsuario(String nomeCompleto){
+    public CadastroUsuario buscarCadastroPorNome(String nomeCompleto){
         return cadastroUsuarioRepository.findAll(nomeCompleto);
 
     }
@@ -42,6 +44,14 @@ public class CadastroUsuarioService {
             return true;
         }
         return false;
+    }
+
+    public List<CadastroUsuarioRepository> listarCadastroUsuarios(String codigoFuncional) {
+        if (codigoFuncional != null) {
+            return cadastroUsuarioRepository.findBycodigoFuncional();
+        } else {
+           return cadastroUsuarioRepository.findAll();
+        }
     }
     }
 
