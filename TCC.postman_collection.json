@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "5a43fe7c-4c4b-4246-8aa9-9e29f7be51e6",
+		"name": "TCC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24142505"
+	},
+	"item": [
+		{
+			"name": "Criar cadastro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"loginEmail\": \"thais@bradesco.com.br\",\r\n    \"nomeCompleto\": \"Thais Machado\",\r\n    \"codigoFuncional\": \"11111\",\r\n    \"telefone\":\"9999999\",\r\n    \"endereco\": {\r\n        \"cep\":\"8175980\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cadastro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar cadastro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cadastro",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

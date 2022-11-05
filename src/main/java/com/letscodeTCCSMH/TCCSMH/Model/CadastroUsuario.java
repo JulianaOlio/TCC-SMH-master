@@ -27,7 +27,7 @@ public class CadastroUsuario {
         this.endereco = endereco;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
 
     @OneToOne
