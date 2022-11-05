@@ -17,7 +17,7 @@ public class CadastroUsuarioService {
         cadastroUsuarioRepository.save();
     }
 
-    public CadastroUsuario buscarCadastroPorNome(String nomeCompleto){
+    public CadastroUsuario buscarCadastroPorNome(String nomeCompleto) {
         return cadastroUsuarioRepository.findAll(nomeCompleto);
 
     }
@@ -26,7 +26,7 @@ public class CadastroUsuarioService {
         return cadastroUsuarioRepository.findByid_Email(id_Email);
     }
 
-    public boolean atualizarCadastroUsuario(String id_Email,CadastroUsuario cadastroUsuario) {
+    public boolean atualizarCadastroUsuario(String id_Email, CadastroUsuario cadastroUsuario) {
         CadastroUsuario cadastroUsuarioBD = cadastroUsuarioRepository.findByid_Email(id_Email);
         if (cadastroUsuario != null) {
             cadastroUsuarioBD.setNomeCompleto(cadastroUsuario.getNomeCompleto());
@@ -52,15 +52,15 @@ public class CadastroUsuarioService {
         if (nomeCompleto != null) {
             return cadastroUsuarioRepository.findBynomeCompleto();
         } else {
-           return cadastroUsuarioRepository.findAll();
-        }
-    }
-    public List<CadastroUsuarioRepository> listarCadastroIdEmail(String id_Email) {
-        if (id_Email != null) {
-            return cadastroUsuarioRepository.findByid_Email();
-        } else {
             return cadastroUsuarioRepository.findAll();
         }
     }
 
-
+    public List<CadastroUsuarioRepository> listarCadastroIdEmail(String id_Email) {
+        if (id_Email != null) {
+            return (List<CadastroUsuarioRepository>) cadastroUsuarioRepository.findByid_Email(id_Email);
+        } else {
+            return cadastroUsuarioRepository.findAll();
+        }
+    }
+}

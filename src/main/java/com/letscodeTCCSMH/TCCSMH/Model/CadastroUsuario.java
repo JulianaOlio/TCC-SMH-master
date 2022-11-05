@@ -11,8 +11,10 @@ import java.util.List;
 public class CadastroUsuario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id_Email;
+    private Long id_Email;
 
+    @Column(unique=true)
+    private String loginEmail;
     private String nomeCompleto;
     private String codigoFuncional;
     private String telefone; //verificar se precisa uma classe apartada do telefone. se criar a lista precisaremos criar classe telefone
@@ -64,4 +66,5 @@ public class CadastroUsuario{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
 }
