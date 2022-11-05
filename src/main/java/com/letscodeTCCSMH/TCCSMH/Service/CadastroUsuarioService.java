@@ -14,53 +14,46 @@ public class CadastroUsuarioService {
     private CadastroUsuarioRepository cadastroUsuarioRepository;
 
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
-        cadastroUsuarioRepository.save();
+        cadastroUsuarioRepository.save(cadastroUsuario);
     }
 
     public CadastroUsuario buscarCadastroPorNome(String nomeCompleto) {
-        return cadastroUsuarioRepository.findAll(nomeCompleto);
+        return cadastroUsuarioRepository.findByNomeCompleto(nomeCompleto);
 
     }
 
-    public CadastroUsuario buscarCadastroUsuario(String id_Email) {
-        return cadastroUsuarioRepository.findByid_Email(id_Email);
+    public CadastroUsuario buscarCadastroUsuario(String loginEmail) {
+        return cadastroUsuarioRepository.findByLoginEmail(loginEmail);
     }
 
-    public boolean atualizarCadastroUsuario(String id_Email, CadastroUsuario cadastroUsuario) {
-        CadastroUsuario cadastroUsuarioBD = cadastroUsuarioRepository.findByid_Email(id_Email);
+    public boolean atualizarCadastroUsuario(String loginEmail, CadastroUsuario cadastroUsuario) {
+        CadastroUsuario cadastroUsuarioBD = cadastroUsuarioRepository.findByLoginEmail(loginEmail);
         if (cadastroUsuario != null) {
             cadastroUsuarioBD.setNomeCompleto(cadastroUsuario.getNomeCompleto());
             cadastroUsuarioBD.setCodigoFuncional(cadastroUsuario.getCodigoFuncional());
             cadastroUsuarioBD.setEndereco(cadastroUsuario.getEndereco());
             cadastroUsuarioBD.setTelefone(cadastroUsuario.getTelefone());
-            cadastroUsuarioRepository.save();
+            cadastroUsuarioRepository.save(cadastroUsuario);
             return true;
         }
         return false;
     }
 
-    public boolean excluirCadastroUsuario(String id_Email) {
-        CadastroUsuario cadastroUsuario = cadastroUsuarioRepository.findBycodigoFuncional(id_Email);
+    public boolean excluirCadastroUsuario(String loginEmail) {
+        CadastroUsuario cadastroUsuario = cadastroUsuarioRepository.findBycodigoFuncional(loginEmail);
         if (cadastroUsuario != null) {
-            cadastroUsuarioRepository.delete();
+            cadastroUsuarioRepository.delete(cadastroUsuario);
             return true;
         }
         return false;
     }
 
-    public List<CadastroUsuarioRepository> listarCadastroUsuarios(String nomeCompleto) {
+    public List<CadastroUsuario> listarCadastroUsuarios(String nomeCompleto) {
         if (nomeCompleto != null) {
-            return cadastroUsuarioRepository.findBynomeCompleto();
-        } else {
             return cadastroUsuarioRepository.findAll();
+        } else {
+            return (List<CadastroUsuario>) cadastroUsuarioRepository.findAll();
         }
     }
 
-    public List<CadastroUsuarioRepository> listarCadastroIdEmail(String id_Email) {
-        if (id_Email != null) {
-            return (List<CadastroUsuarioRepository>) cadastroUsuarioRepository.findByid_Email(id_Email);
-        } else {
-            return cadastroUsuarioRepository.findAll();
-        }
-    }
 }

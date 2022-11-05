@@ -8,16 +8,16 @@ import java.util.List;
 
 
 @Entity
-public class CadastroUsuario{
+public class CadastroUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Email;
-
-    @Column(unique=true)
+    private Long id;
+    @Column(unique = true)
     private String loginEmail;
     private String nomeCompleto;
     private String codigoFuncional;
     private String telefone; //verificar se precisa uma classe apartada do telefone. se criar a lista precisaremos criar classe telefone
+
 
     public Endereco getEndereco() {
         return endereco;
@@ -31,24 +31,32 @@ public class CadastroUsuario{
     private Endereco endereco;
 
     @OneToOne
-    @JoinColumn (name = "id_perfilacesso")
+    @JoinColumn(name = "id_perfil_acesso")
     @JsonIgnore
     private PerfilAcesso perfilAcesso;
 
-    public String getid_Email() {
-        return id_Email;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_Email(String email) {
-        this.id_Email = email;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLoginEmail() {
+        return loginEmail;
+    }
+
+    public void setLoginEmail(String loginEmail) {
+        this.loginEmail = loginEmail;
     }
 
     public String getNomeCompleto() {
         return nomeCompleto;
     }
 
-    public void setNomeCompleto(String nome) {
-        this.nomeCompleto = nome;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getCodigoFuncional() {
@@ -67,4 +75,11 @@ public class CadastroUsuario{
         this.telefone = telefone;
     }
 
+    public PerfilAcesso getPerfilAcesso() {
+        return perfilAcesso;
+    }
+
+    public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
+        this.perfilAcesso = perfilAcesso;
+    }
 }

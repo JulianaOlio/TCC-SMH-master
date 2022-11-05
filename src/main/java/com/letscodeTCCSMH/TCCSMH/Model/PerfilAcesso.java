@@ -3,14 +3,22 @@ package com.letscodeTCCSMH.TCCSMH.Model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-@Entity
+@Entity(name = "perfil_acesso")
 public class PerfilAcesso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idPefilAcesso;
     private String nome;
     private String descricao;
 
+    public Long getIdPefilAcesso() {
+        return idPefilAcesso;
+    }
+
+    public void setIdPefilAcesso(Long idPefilAcesso) {
+        this.idPefilAcesso = idPefilAcesso;
+    }
 
     @OneToOne
     private CadastroUsuario cadastroUsuario;

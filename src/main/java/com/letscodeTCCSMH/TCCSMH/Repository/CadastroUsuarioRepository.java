@@ -1,19 +1,15 @@
 package com.letscodeTCCSMH.TCCSMH.Repository;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CadastroUsuarioRepository extends JpaRepository <CadastroUsuario,Long> {
-    void save();
+public interface CadastroUsuarioRepository extends CrudRepository<CadastroUsuario,Long> {
+
     CadastroUsuario findBycodigoFuncional(String codigoFuncional);
-    void delete();
-    CadastroUsuario findAll(String nomeCompleto);
-    List<CadastroUsuarioRepository> findBynomeCompleto();
-    CadastroUsuario findByid_Email(String id_Email);
-
-    List<CadastroUsuarioRepository> findById_Email();
-
+    List<CadastroUsuario> findAll();
+    CadastroUsuario findByLoginEmail(String loginEmail);
+    CadastroUsuario findByNomeCompleto(String nomeCompleto);
 }
 

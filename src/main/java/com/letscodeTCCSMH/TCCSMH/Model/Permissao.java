@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 public class Permissao {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codigoPermissao;
     private String nomePermissao;
 

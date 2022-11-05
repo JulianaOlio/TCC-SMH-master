@@ -17,7 +17,7 @@ public class CadastroUsuarioController {
 
     @PostMapping
     public String salvarCadastroUsuario(@RequestBody CadastroUsuario cadastroUsuario) {
-        if(cadastroUsuario.getid_Email() == null|| cadastroUsuario.getid_Email().equals("") ){
+        if(cadastroUsuario.getLoginEmail() == null|| cadastroUsuario.getLoginEmail().equals("") ){
             return "E-mail do usuário é obrigatório";
         }
         if (cadastroUsuario.getNomeCompleto() == null || cadastroUsuario.getNomeCompleto().equals("")) {
@@ -35,7 +35,7 @@ public class CadastroUsuarioController {
 
         }
         CadastroUsuario cadastroUsuarioBD =
-                cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getid_Email());
+                cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getLoginEmail());
         if (cadastroUsuarioBD != null) {
             return "E-mail já cadastrado.";
         }
@@ -45,9 +45,9 @@ public class CadastroUsuarioController {
     }
 
     //localhost:8080/cadastro/abc@gmail.com
-    @GetMapping("/{id_Email}")
-    public CadastroUsuario buscacadastroUsuario(@PathVariable String id_Email){
-        return cadastroUsuarioService.buscarCadastroUsuario(id_Email);
+    @GetMapping("/{loginEmail}")
+    public CadastroUsuario buscacadastroUsuario(@PathVariable String loginEmail){
+        return cadastroUsuarioService.buscarCadastroUsuario(loginEmail);
     }
 
     @GetMapping("/nomeCompleto")
@@ -55,18 +55,18 @@ public class CadastroUsuarioController {
         return cadastroUsuarioService.buscarCadastroPorNome(nomeCompleto);
     }
 
-    @PutMapping("/{id_Email}")
-    public String atualizaCadastroUsuario(@PathVariable String id_Email, @RequestBody CadastroUsuario cadastroUsuario) {
-        boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(id_Email, cadastroUsuario);
+    @PutMapping("/{loginEmail}")
+    public String atualizaCadastroUsuario(@PathVariable String loginEmail, @RequestBody CadastroUsuario cadastroUsuario) {
+        boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(loginEmail, cadastroUsuario);
         if (atualizado) {
         return "Cadastro do usuário atualizado com sucesso";
     }
         return "Cadastro do usuário não encontrado";
     }
 
-    @DeleteMapping("/{id_Email}")
-    public String deletaCadastroUsuario(@PathVariable String id_Email) {
-        boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(id_Email);
+    @DeleteMapping("/{loginEmail}")
+    public String deletaCadastroUsuario(@PathVariable String loginEmail) {
+        boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(loginEmail);
         if (deletado) {
             return "Cadastro do usuário excluído com sucesso!";
         }
@@ -74,9 +74,9 @@ public class CadastroUsuarioController {
     }
 
         @GetMapping
-        public List<CadastroUsuarioRepository> listarCadastroIdEmail(
-                @RequestParam(name = "E-mails dos Usuários", required = false) String id_Email) {
-        return cadastroUsuarioService.listarCadastroIdEmail(id_Email);
+        public List<CadastroUsuario> cadastroUsuarios(
+                @RequestParam(name = "Nomes dos Usuários", required = false) String nomeCompleto) {
+        return cadastroUsuarioService.listarCadastroUsuarios(nomeCompleto);
         }
 
 
