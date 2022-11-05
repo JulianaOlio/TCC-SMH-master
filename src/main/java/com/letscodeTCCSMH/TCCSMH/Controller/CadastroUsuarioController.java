@@ -17,6 +17,9 @@ public class CadastroUsuarioController {
 
     @PostMapping
     public String salvarCadastroUsuario(@RequestBody CadastroUsuario cadastroUsuario) {
+        if(cadastroUsuario.getid_Email() == null|| cadastroUsuario.getid_Email().equals("") ){
+            return "E-mail do usuário é obrigatório";
+        }
         if (cadastroUsuario.getNomeCompleto() == null || cadastroUsuario.getNomeCompleto().equals("")) {
             return "O nome do usuário é obrigatório";
         }
