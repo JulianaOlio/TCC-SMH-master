@@ -55,6 +55,12 @@ public class CadastroUsuarioService {
            return cadastroUsuarioRepository.findAll();
         }
     }
+    public List<CadastroUsuarioRepository> listarCadastroIdEmail(String id_Email) {
+        if (id_Email != null) {
+            return cadastroUsuarioRepository.findByid_Email();
+        } else {
+            return cadastroUsuarioRepository.findAll();
+        }
     }
 
 

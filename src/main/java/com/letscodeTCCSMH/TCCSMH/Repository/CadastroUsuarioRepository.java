@@ -11,6 +11,9 @@ public interface CadastroUsuarioRepository extends JpaRepository <CadastroUsuari
     void delete();
     CadastroUsuario findAll(String nomeCompleto);
     List<CadastroUsuarioRepository> findBynomeCompleto();
-    CadastroUsuario findByid_Email(String id_email);
+    CadastroUsuario findByid_Email(String id_Email);
+
+    List<CadastroUsuarioRepository> findById_Email();
+
 }
 

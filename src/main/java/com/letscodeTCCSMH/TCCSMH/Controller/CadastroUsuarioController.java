@@ -73,9 +73,13 @@ public class CadastroUsuarioController {
         return "Cadastro do usuário não encontrado.";
     }
 
-    @GetMapping
-    public List<CadastroUsuarioRepository> listarCadastroUsuarios(
-            @RequestParam(name = "Nomes dos Usuários", required = false) String nomeCompleto) {
-            return cadastroUsuarioService.listarCadastroUsuarios(nomeCompleto);
-    }
-    }
+        @GetMapping
+        public List<CadastroUsuarioRepository> listarCadastroIdEmail(
+                @RequestParam(name = "E-mails dos Usuários", required = false) String id_Email) {
+        return cadastroUsuarioService.listarCadastroIdEmail(id_Email);
+        }
+
+
+               }
+
+
