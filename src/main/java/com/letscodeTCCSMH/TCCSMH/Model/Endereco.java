@@ -1,9 +1,8 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 class Endereco {
@@ -18,6 +17,15 @@ class Endereco {
     private String bairro;
     private String cidade;
     private String estado;
+
+
+    //Acrescentei essas informações hoje dia 07/11/22.
+    //linhas 25 ate 28. Thais
+
+    @OneToOne
+    @JoinColumn(name = "id_cadastro_usuario")
+    @JsonIgnore
+    private CadastroUsuario cadastroUsuario;
 
     public Integer getId() {
         return id;

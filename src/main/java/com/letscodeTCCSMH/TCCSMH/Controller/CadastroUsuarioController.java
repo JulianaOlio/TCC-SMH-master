@@ -46,7 +46,7 @@ public class CadastroUsuarioController {
 
     //localhost:8080/cadastro/abc@gmail.com
     @GetMapping("/{loginEmail}")
-    public CadastroUsuario buscacadastroUsuario(@PathVariable String loginEmail){
+    public CadastroUsuario buscaCadastroUsuario(@PathVariable String loginEmail){
         return cadastroUsuarioService.buscarCadastroUsuario(loginEmail);
     }
 
@@ -79,7 +79,6 @@ public class CadastroUsuarioController {
         return cadastroUsuarioService.listarCadastroUsuarios(nomeCompleto);
         }
 
-
-               }
+}
 
 
