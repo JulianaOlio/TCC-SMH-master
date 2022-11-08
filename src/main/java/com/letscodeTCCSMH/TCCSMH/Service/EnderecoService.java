@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 public class EnderecoService {
 
     @Autowired
-    private EnderecoRepository enderecoService;
+    private EnderecoRepository enderecoRepository;
 
     public Endereco salvarEndereco(Endereco endereco) {
+        return enderecoRepository.save(endereco);
+    }
 
-
-        return endereco;
+    public Endereco buscarEndereco(Endereco endereco){
+        return enderecoRepository.findAll(endereco);
     }
 }

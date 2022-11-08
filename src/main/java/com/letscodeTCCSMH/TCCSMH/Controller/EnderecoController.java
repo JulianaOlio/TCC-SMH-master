@@ -41,8 +41,13 @@ public class EnderecoController {
             return "O Estado é obrigatório para o pedido";
         }
         Endereco enderecoBD = enderecoService.salvarEndereco(endereco);
+        return "Endereço cadastrado com sucesso!";
 
-
-        return null;
     }
+    @GetMapping("/buscaEndereco")
+    public Endereco buscaEndereco (@RequestBody Endereco endereco){
+        return enderecoService.buscarEndereco(endereco);
+
+    }
+
 }
