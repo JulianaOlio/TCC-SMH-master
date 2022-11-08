@@ -17,23 +17,51 @@ public class CadastroUsuarioController {
 
     @PostMapping
     public String salvarCadastroUsuario(@RequestBody CadastroUsuario cadastroUsuario) {
-        if(cadastroUsuario.getLoginEmail() == null|| cadastroUsuario.getLoginEmail().equals("") ){
+        if (cadastroUsuario.getLoginEmail() == null || cadastroUsuario.getLoginEmail().equals("")) {
             return "E-mail do usuário é obrigatório";
         }
         if (cadastroUsuario.getNomeCompleto() == null || cadastroUsuario.getNomeCompleto().equals("")) {
             return "O nome do usuário é obrigatório";
         }
 
-        if (cadastroUsuario.getCodigoFuncional() == null ||cadastroUsuario.getCodigoFuncional().equals("")) {
+        if (cadastroUsuario.getCodigoFuncional() == null || cadastroUsuario.getCodigoFuncional().equals("")) {
             return "O código funcionsl é obrigatório";
         }
-        if (cadastroUsuario.getTelefone() == null ||cadastroUsuario.getTelefone().equals("")) {
+        if (cadastroUsuario.getTelefone() == null || cadastroUsuario.getTelefone().equals("")) {
             return "O telefone é obrigatório";
         }
-        if (cadastroUsuario.getEndereco() == null) {
-            return "O Endereço é obrigatório";
 
+        if (cadastroUsuario.getEndereco().getTipoLogradouro() == null || cadastroUsuario.getEndereco().getTipoLogradouro().equals("")) {
+            return "O tipo logradouro é obrigatório";
         }
+
+        if (cadastroUsuario.getEndereco().getLogradouro() == null || cadastroUsuario.getEndereco().getLogradouro().equals("")) {
+            return "O logradouro é obrigatório";
+        }
+
+        if (cadastroUsuario.getEndereco().getNumero() == null || cadastroUsuario.getEndereco().getNumero().equals("")) {
+            return "O número é obrigatório";
+        }
+
+        if (cadastroUsuario.getEndereco().getCep() == null || cadastroUsuario.getEndereco().getCep().equals("")) {
+            return "O CEP é obrigatório";
+        }
+
+        if (cadastroUsuario.getEndereco().getComplemento() == null || cadastroUsuario.getEndereco().getComplemento().equals("")) {
+            return "O complemento é obrigatório";
+        }
+
+        if (cadastroUsuario.getEndereco().getBairro() == null || cadastroUsuario.getEndereco().getBairro().equals("")) {
+            return "O bairro é obrigatório";
+        }
+
+        if (cadastroUsuario.getEndereco().getCidade() == null || cadastroUsuario.getEndereco().getCidade().equals("")) {
+            return "A cidade é obrigatória";
+        }
+        if (cadastroUsuario.getEndereco().getEstado() == null || cadastroUsuario.getEndereco().getEstado().equals("")) {
+            return "O estado é obrigatório";
+        }
+
         CadastroUsuario cadastroUsuarioBD =
                 cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getLoginEmail());
         if (cadastroUsuarioBD != null) {

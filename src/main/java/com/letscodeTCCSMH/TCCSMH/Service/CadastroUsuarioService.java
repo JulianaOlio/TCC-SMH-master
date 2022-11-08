@@ -2,6 +2,7 @@ package com.letscodeTCCSMH.TCCSMH.Service;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
+import com.letscodeTCCSMH.TCCSMH.Repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,9 @@ public class CadastroUsuarioService {
 
     @Autowired
     private CadastroUsuarioRepository cadastroUsuarioRepository;
+
+//    @Autowired
+//    private EnderecoRepository enderecoRepository;
 
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
         cadastroUsuarioRepository.save(cadastroUsuario);
