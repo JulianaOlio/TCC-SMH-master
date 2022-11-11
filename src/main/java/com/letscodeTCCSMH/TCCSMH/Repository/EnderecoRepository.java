@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface EnderecoRepository extends CrudRepository<Endereco, Integer> {
 
 
-    Endereco findAll(Endereco cep);
+    Endereco findByCep (Endereco cep);
 }

@@ -16,7 +16,7 @@ public class EnderecoService {
     private CadastroUsuarioRepository cadastroUsuarioRepository;
 
 
-    public Endereco buscarEndereco(Endereco cep){
-        return enderecoRepository.findAll(cep);
+    public Endereco buscarEndereco(Endereco endereco){
+        return enderecoRepository.findByCep(endereco);
     }
 }
