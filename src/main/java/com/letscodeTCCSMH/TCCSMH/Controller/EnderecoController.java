@@ -15,7 +15,7 @@ public class EnderecoController {
 
     @GetMapping("/buscaEndereco")
     public Endereco buscaEndereco (@RequestBody Endereco endereco){
-        return enderecoService.buscarEndereco(endereco;
+        return enderecoService.buscarEndereco(endereco);
 
     }
 
