@@ -1,15 +1,15 @@
 package com.letscodeTCCSMH.TCCSMH.Controller;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
-import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 import com.letscodeTCCSMH.TCCSMH.Service.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/cadastro")
+@RequestMapping("/usuario")
 public class CadastroUsuarioController {
 
     @Autowired
@@ -72,14 +72,23 @@ public class CadastroUsuarioController {
         return "Cadastro realizado com sucesso!";
     }
 
-    //localhost:8080/cadastro/abc@gmail.com
-    @GetMapping("/{loginEmail}")
-    public CadastroUsuario buscaCadastroUsuario(@PathVariable String loginEmail){
+    //localhost:8080/usuario/?loginEmail
+    //Esse getMappig com filtro "/" é possivel
+    //filtra o usuario com um email especifico.
+    //Usamos o RequestParam para ficar mais certo o filtro.
+    @GetMapping("/")
+    public CadastroUsuario buscaCadastroUsuario(@RequestParam("loginEmail") String loginEmail ){
         return cadastroUsuarioService.buscarCadastroUsuario(loginEmail);
     }
 
-    @GetMapping("/nomeCompleto")
-    public CadastroUsuario buscaCadastroPorNome(@RequestBody String nomeCompleto){
+    //localhost:8080/usuario/buscarPorNome?nomeCompleto=Jao
+    //Esse getMappig com filtro "/" é possivel
+    //filtra o usuario com um nome completo especifico.
+    //Usamos o RequestParam para ficar mais certo o filtro.
+
+    //ver com o profe para colocar esses dois getMapping juntos com condicao ou para nao ficar muito repetitivo
+    @GetMapping("/buscarPorNome")
+    public CadastroUsuario buscaCadastroPorNome(@RequestParam("nomeCompleto") String nomeCompleto){
         return cadastroUsuarioService.buscarCadastroPorNome(nomeCompleto);
     }
 
