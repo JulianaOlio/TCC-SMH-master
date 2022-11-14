@@ -22,7 +22,7 @@ public class Requisicao {
     private Status statusRequisicao;
     @OneToOne
     @JoinColumn
-    private Master aprovadorRequisicao;
+    private PerfilAcesso aprovadorRequisicao;
 
     public Status getStatus() {
         return status;
@@ -79,11 +79,11 @@ public class Requisicao {
         this.statusRequisicao = statusRequisicao;
     }
 
-    public Master getAprovadorRequisicao() {
+    public PerfilAcesso getAprovadorRequisicao() {
         return aprovadorRequisicao;
     }
 
-    public void setAprovadorRequisicao(Master aprovadorRequisicao) {
+    public void setAprovadorRequisicao(PerfilAcesso aprovadorRequisicao) {
         this.aprovadorRequisicao = aprovadorRequisicao;
     }
 }

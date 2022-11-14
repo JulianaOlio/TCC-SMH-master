@@ -8,8 +8,6 @@ public class Permissao {
     private String codigoPermissao;
     private String nomePermissao;
 
-
-
     @OneToOne
     private Master master;
     public String getCodigoPermissao() {

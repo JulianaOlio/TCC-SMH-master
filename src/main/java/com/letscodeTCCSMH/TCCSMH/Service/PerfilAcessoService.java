@@ -20,4 +20,24 @@ public class PerfilAcessoService {
         return perfilAcessoRepository.findByNome(nome);
 
     }
+    public boolean atualizarPerfilAcesso(String nome, PerfilAcesso perfilAcesso) {
+        PerfilAcesso perfilAcessoBD  = perfilAcessoRepository.findByNome(nome);
+        if (perfilAcesso != null) {
+            perfilAcessoBD.setNome(perfilAcessoBD.getNome());
+            perfilAcessoBD.setDescricao(perfilAcessoBD.getDescricao());
+            perfilAcessoRepository.save(perfilAcessoBD);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean excluirPerfilAcesso(String nome) {
+       PerfilAcesso perfilAcesso = perfilAcessoRepository.findByNome(nome);
+        if (perfilAcesso != null) {
+            perfilAcessoRepository.delete(perfilAcessoRepository.findByNome(nome));
+            return true;
+        }
+        return false;
+    }
+
 }

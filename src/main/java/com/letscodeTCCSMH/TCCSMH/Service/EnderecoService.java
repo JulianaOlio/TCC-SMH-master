@@ -1,7 +1,6 @@
 package com.letscodeTCCSMH.TCCSMH.Service;
 
 import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
-import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 import com.letscodeTCCSMH.TCCSMH.Repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +11,38 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    @Autowired
-    private CadastroUsuarioRepository cadastroUsuarioRepository;
+    // @Autowired
+    //private CadastroUsuarioRepository cadastroUsuarioRepository;
 
-
-    public Endereco buscarEndereco(Endereco endereco){
+    public Endereco salvarEndereco(Endereco endereco) {
+        enderecoRepository.save(endereco);
+        return endereco;
+    }
+    public Endereco buscarEndereco(Endereco endereco) {
         return enderecoRepository.findByCep(endereco);
     }
-}
+    public boolean atualizarEndereco(String cep, Endereco endereco) {
+             Endereco enderecoBD = enderecoRepository.findByCepString(cep);
+            if (endereco != null) {
+                enderecoBD.setTipoLogradouro(endereco.getTipoLogradouro());
+                enderecoBD.setLogradouro(endereco.getLogradouro());
+                enderecoBD.setNumero(endereco.getNumero());
+                enderecoBD.setCep(endereco.getCep());
+                enderecoBD.setComplemento(endereco.getComplemento());
+                enderecoBD.setBairro(endereco.getBairro());
+                enderecoBD.setCidade(endereco.getCidade());
+                enderecoBD.setEstado(endereco.getEstado());
+                enderecoRepository.save(endereco);
+                return true;
+            }
+            return false;
+        }
+    public boolean excluirEndereco(String cep) {
+        Endereco enderecousuario = enderecoRepository.findByCepString(cep);
+        if (enderecousuario != null) {
+            enderecoRepository.findByCepString(cep);
+            return true;
+        }
+        return false;
+    }
+    }

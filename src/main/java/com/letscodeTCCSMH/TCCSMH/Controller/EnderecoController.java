@@ -13,10 +13,31 @@ public class EnderecoController {
     @Autowired
     private EnderecoService enderecoService;
 
-    @GetMapping("/buscaEndereco")
-    public Endereco buscaEndereco (@RequestBody Endereco endereco){
-        return enderecoService.buscarEndereco(endereco);
-
+    @PostMapping
+    public Endereco salvaEndereco(@RequestBody Endereco endereco) {
+        return enderecoService.salvarEndereco(endereco);
     }
 
+    @GetMapping("/buscaEndereco")
+    public Endereco buscaEndereco(@RequestBody Endereco endereco) {
+        return enderecoService.buscarEndereco(endereco);
+    }
+
+    @PutMapping("/{atualizaCep}")
+    public String atualizaEndereco(@PathVariable String cep, @RequestBody Endereco endereco) {
+        boolean atualizar = enderecoService.atualizarEndereco(cep, endereco);
+        if (atualizar) {
+            return "Endereço atualizado com sucesso";
+        }
+        return "Endereço não encontrado";
+    }
+
+    @DeleteMapping("{/excluirEndereco}")
+    public String deletaEndereco(@PathVariable String cep) {
+        boolean deletar = enderecoService.excluirEndereco(cep);
+        if (deletar) {
+      return "Endereço excluido com sucesso";
+    }
+        return "Endereço não localizado";
+}
 }

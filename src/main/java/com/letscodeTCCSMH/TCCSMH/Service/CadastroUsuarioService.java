@@ -16,6 +16,9 @@ public class CadastroUsuarioService {
 
 //    @Autowired
 //    private EnderecoRepository enderecoRepository;
+//     será necessário criar a class usuario, para efetuar relacionamento com a requisição?
+//     se sim, um funcionário p/ varias requisiçoes
+
 
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
         cadastroUsuarioRepository.save(cadastroUsuario);

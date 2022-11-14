@@ -17,10 +17,31 @@ public class PerfilAcessoController {
     @PostMapping
     public String salvarPerfildeAcesso(@RequestBody PerfilAcesso perfilAcesso) {
         perfilAcessoService.salvarPerfilAcesso(perfilAcesso);
-        return"Perfil de acesso cadastrado com Sucesso";
-}
+        return "Perfil de acesso cadastrado com Sucesso";
+    }
+
     @GetMapping("/{nome}")
-    public PerfilAcesso buscarPerfilPorNome(@PathVariable String nome){
-        return  perfilAcessoService.buscarPerfilAcesso(nome);
+    public PerfilAcesso buscarPerfilPorNome(@PathVariable String nome) {
+        return perfilAcessoService.buscarPerfilAcesso(nome);
+    }
+
+    @PutMapping("/{nome}")
+    public String atualizaPerfilAcesso(@PathVariable String nome, @RequestBody PerfilAcesso perfilAcesso) {
+        boolean atualizado = perfilAcessoService.atualizarPerfilAcesso(nome, perfilAcesso);
+        if (atualizado) {
+            return "Perfil de acesso atualizado com sucesso";
+        }
+        return "Perfil de Acesso não encontrado.";
+    }
+
+      @DeleteMapping("/{nome}")
+       public String deletaPerfilAcesso(@PathVariable String nome) {
+        boolean deletado = perfilAcessoService.excluirPerfilAcesso(nome);
+        if (deletado) {
+           return "Perfil de Acesso excluído com sucesso!";
+        }
+        return "Perfil de Acesso não encontrado.";
+
     }
 }
+
