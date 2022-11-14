@@ -17,7 +17,7 @@ public class EnderecoController {
     public Endereco salvaEndereco(@RequestBody Endereco endereco) {
         return enderecoService.salvarEndereco(endereco);
     }
-
+//teste git
     @GetMapping("/buscaEndereco")
     public Endereco buscaEndereco(@RequestBody Endereco endereco) {
         return enderecoService.buscarEndereco(endereco);
