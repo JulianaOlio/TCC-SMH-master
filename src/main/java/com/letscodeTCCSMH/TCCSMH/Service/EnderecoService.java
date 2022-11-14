@@ -15,8 +15,7 @@ public class EnderecoService {
     //private CadastroUsuarioRepository cadastroUsuarioRepository;
 
     public Endereco salvarEndereco(Endereco endereco) {
-        enderecoRepository.save(endereco);
-        return endereco;
+        return enderecoRepository.save(endereco);
     }
     public Endereco buscarEndereco(Endereco endereco) {
         return enderecoRepository.findByCep(endereco);
@@ -38,8 +37,8 @@ public class EnderecoService {
             return false;
         }
     public boolean excluirEndereco(String cep) {
-        Endereco enderecousuario = enderecoRepository.findByCepString(cep);
-        if (enderecousuario != null) {
+        Endereco enderecoUsuario = enderecoRepository.findByCepString(cep);
+        if (enderecoUsuario != null) {
             enderecoRepository.findByCepString(cep);
             return true;
         }
