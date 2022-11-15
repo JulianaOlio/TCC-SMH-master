@@ -13,6 +13,8 @@ public class CadastroUsuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
+    //inserir anotacao @NotBlank
+    //ibernate validation
     private String loginEmail;
     private String nomeCompleto;
     private String codigoFuncional;
@@ -27,14 +29,21 @@ public class CadastroUsuario {
         this.endereco = endereco;
     }
 
-
     @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
+
 
     @OneToOne
     @JoinColumn(name = "id_perfil_acesso")
     @JsonIgnore
     private PerfilAcesso perfilAcesso;
+
+    //Perguntar para o professor se esse cascade esta ok
+    //@OneToMany é sempre com lista
+    @OneToMany(mappedBy = "cadastroUsuario")
+    @JsonIgnore
+    private List<Requisicao> requisicoes;
+
 
     public Long getId() {
         return id;

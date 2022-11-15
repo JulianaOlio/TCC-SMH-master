@@ -25,7 +25,7 @@ public class CadastroUsuarioController {
         }
 
         if (cadastroUsuario.getCodigoFuncional() == null || cadastroUsuario.getCodigoFuncional().equals("")) {
-            return "O código funcionsl é obrigatório";
+            return "O código funcional é obrigatório";
         }
         if (cadastroUsuario.getTelefone() == null || cadastroUsuario.getTelefone().equals("")) {
             return "O telefone é obrigatório";

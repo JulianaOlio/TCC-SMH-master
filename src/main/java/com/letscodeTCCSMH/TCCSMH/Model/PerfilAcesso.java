@@ -13,8 +13,11 @@ public class PerfilAcesso {
     private String nome;
     private String descricao;
 
+    private Boolean master;
+
     public Long getIdPerfilAcesso() {
         return idPerfilAcesso;
+
     }
 
     public void setIdPerfilAcesso(Long idPerfilAcesso) {
@@ -42,5 +45,13 @@ public class PerfilAcesso {
 
     public void setCadastroUsuario(CadastroUsuario cadastroUsuario) {
         this.cadastroUsuario = cadastroUsuario;
+    }
+
+    public Boolean getMaster() {
+        return master;
+    }
+
+    public void setMaster(Boolean master) {
+        this.master = master;
     }
 }

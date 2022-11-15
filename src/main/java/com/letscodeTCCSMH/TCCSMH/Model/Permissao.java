@@ -8,8 +8,7 @@ public class Permissao {
     private String codigoPermissao;
     private String nomePermissao;
 
-    @OneToOne
-    private Master master;
+
     public String getCodigoPermissao() {
         return codigoPermissao;
     }
@@ -23,11 +22,5 @@ public class Permissao {
         this.nomePermissao = nomePermissao;
     }
 
-    public Master getMaster() {
-        return master;
-    }
 
-    public void setMaster(Master master) {
-        this.master = master;
-    }
 }

@@ -6,6 +6,8 @@ import com.letscodeTCCSMH.TCCSMH.Service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
@@ -17,14 +19,16 @@ public class EnderecoController {
     public Endereco salvaEndereco(@RequestBody Endereco endereco) {
         return enderecoService.salvarEndereco(endereco);
     }
-//teste git
-    @GetMapping("/buscaEndereco")
-    public Endereco buscaEndereco(@RequestBody Endereco endereco) {
-        return enderecoService.buscarEndereco(endereco);
+
+    //Verificar para retornar o endereco quando faz a chamada.
+    @GetMapping("/")
+    public List<Endereco> buscaEndereco() {
+        return enderecoService.listaEndereco();
     }
 
+    //deu erro no Postman, verificar depois.
     @PutMapping("/{atualizaCep}")
-    public String atualizaEndereco(@PathVariable String cep, @RequestBody Endereco endereco) {
+    public String atualizaEndereco(@PathVariable("atualizaCep") String cep, @RequestBody Endereco endereco) {
         boolean atualizar = enderecoService.atualizarEndereco(cep, endereco);
         if (atualizar) {
             return "Endereço atualizado com sucesso";
@@ -32,8 +36,8 @@ public class EnderecoController {
         return "Endereço não encontrado";
     }
 
-    @DeleteMapping("{/excluirEndereco}")
-    public String deletaEndereco(@PathVariable String cep) {
+    @DeleteMapping("/{excluirEndereco}")
+    public String deletaEndereco(@PathVariable("excluirEndereco") String cep) {
         boolean deletar = enderecoService.excluirEndereco(cep);
         if (deletar) {
       return "Endereço excluido com sucesso";

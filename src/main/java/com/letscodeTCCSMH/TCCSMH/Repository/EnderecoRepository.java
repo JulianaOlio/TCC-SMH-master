@@ -6,10 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EnderecoRepository extends CrudRepository<Endereco, Integer> {
+public interface EnderecoRepository extends JpaRepository<Endereco, Integer> {
 
 
-    Endereco findByCep (Endereco cep);
+    Endereco findByCep (String cep);
 
-    Endereco findByCepString (String cep);
 }

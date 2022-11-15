@@ -19,8 +19,6 @@ public class Endereco {
     private String estado;
 
 
-    //Acrescentei essas informações hoje dia 07/11/22.
-    //linhas 25 ate 28. Thais
 
     @OneToOne
     @JoinColumn(name = "id_cadastro_usuario")

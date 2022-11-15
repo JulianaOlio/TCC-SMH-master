@@ -24,6 +24,10 @@ public class Requisicao {
     @JoinColumn
     private PerfilAcesso aprovadorRequisicao;
 
+    @ManyToOne
+    @JoinColumn(name = "dados_solicitante")
+    private CadastroUsuario cadastroUsuario;
+
     public Status getStatus() {
         return status;
     }
