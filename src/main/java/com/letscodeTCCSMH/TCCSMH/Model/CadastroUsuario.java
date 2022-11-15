@@ -38,8 +38,7 @@ public class CadastroUsuario {
     @JsonIgnore
     private PerfilAcesso perfilAcesso;
 
-    //Perguntar para o professor se esse cascade esta ok
-    //@OneToMany é sempre com lista
+
     @OneToMany(mappedBy = "cadastroUsuario")
     @JsonIgnore
     private List<Requisicao> requisicoes;
