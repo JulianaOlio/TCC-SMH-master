@@ -27,8 +27,8 @@ public class EnderecoController {
     }
 
     //deu erro no Postman, verificar depois.
-    @PutMapping("/{atualizaCep}")
-    public String atualizaEndereco(@PathVariable("atualizaCep") String cep, @RequestBody Endereco endereco) {
+    @PutMapping("/atualizaCep")
+    public String atualizaEndereco(@RequestParam(name = "atualizaCep") String cep, @RequestBody Endereco endereco) {
         boolean atualizar = enderecoService.atualizarEndereco(cep, endereco);
         if (atualizar) {
             return "Endereço atualizado com sucesso";

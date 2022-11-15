@@ -11,4 +11,4 @@ public interface PerfilAcessoRepository extends JpaRepository<PerfilAcesso, Inte
 
     PerfilAcesso findByNome (String nome);
 
-}
+ }

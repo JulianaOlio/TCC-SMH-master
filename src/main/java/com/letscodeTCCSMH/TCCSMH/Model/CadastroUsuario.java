@@ -21,13 +21,6 @@ public class CadastroUsuario {
     private String telefone; //verificar se precisa uma classe apartada do telefone. se criar a lista precisaremos criar classe telefone
 
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
@@ -91,4 +84,13 @@ public class CadastroUsuario {
     public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
         this.perfilAcesso = perfilAcesso;
     }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
 }

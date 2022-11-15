@@ -20,21 +20,13 @@ public class Requisicao {
     @OneToOne
     @JoinColumn(name = "status_requisicao_id")
     private Status statusRequisicao;
+
     @OneToOne
     @JoinColumn
-    private PerfilAcesso aprovadorRequisicao;
-
+    private PerfilAcesso perfilAcesso;
     @ManyToOne
     @JoinColumn(name = "dados_solicitante")
     private CadastroUsuario cadastroUsuario;
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     public Integer getId() {
         return id;
@@ -75,6 +67,15 @@ public class Requisicao {
     public void setHeadset(String headset) {
         this.headset = headset;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public Status getStatusRequisicao() {
         return statusRequisicao;
     }
@@ -83,11 +84,19 @@ public class Requisicao {
         this.statusRequisicao = statusRequisicao;
     }
 
-    public PerfilAcesso getAprovadorRequisicao() {
-        return aprovadorRequisicao;
+    public PerfilAcesso getPerfilAcesso() {
+        return perfilAcesso;
     }
 
-    public void setAprovadorRequisicao(PerfilAcesso aprovadorRequisicao) {
-        this.aprovadorRequisicao = aprovadorRequisicao;
+    public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
+        this.perfilAcesso = perfilAcesso;
+    }
+
+    public CadastroUsuario getCadastroUsuario() {
+        return cadastroUsuario;
+    }
+
+    public void setCadastroUsuario(CadastroUsuario cadastroUsuario) {
+        this.cadastroUsuario = cadastroUsuario;
     }
 }

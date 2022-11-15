@@ -21,6 +21,4 @@ public class Permissao {
     public void setNomePermissao(String nomePermissao) {
         this.nomePermissao = nomePermissao;
     }
-
-
 }
