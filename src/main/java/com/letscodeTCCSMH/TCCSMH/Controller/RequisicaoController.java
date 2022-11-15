@@ -11,21 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/requisicao")
-public class RequisicaoController {
+public class RequisicaoController{
 
     @Autowired
-    private RequisicaoService requisicaoService;
-
+    public RequisicaoService requisicaoService;
 
     @PostMapping
-    public String salvaRequisicao(@RequestBody String requisicao){
-
-
-
-
+    public String salvaRequisicao (@RequestBody Requisicao requisicao){
+        requisicaoService.salvarRequisicao(requisicao);
+        return "Requisicao salva com sucesso";
     }
-
-
-
-
 }
+
+
+
+

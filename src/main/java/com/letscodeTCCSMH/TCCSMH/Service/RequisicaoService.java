@@ -14,9 +14,12 @@ public class RequisicaoService {
     @Autowired
     private RequisicaoRepository requisicaoRepository;
 
-    private void salvarRequisicao(Requisicao requisicao) {
+    @Autowired
+    private PerfilAcesso perfilAcesso;
+
+    public void salvarRequisicao(Requisicao requisicao) {
         requisicaoRepository.save(requisicao);
-     }
+    }
 
     private List<Requisicao> listaRequisicoes() {
         return requisicaoRepository.findAll();

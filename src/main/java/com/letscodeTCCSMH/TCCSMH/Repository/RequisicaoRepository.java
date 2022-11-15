@@ -8,6 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RequisicaoRepository extends JpaRepository<Requisicao,Integer>{
 
-
     boolean aprova(String requisicao);
 }
