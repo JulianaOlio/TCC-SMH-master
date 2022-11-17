@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 
@@ -17,7 +18,7 @@ public class CadastroUsuarioController {
     private CadastroUsuarioService cadastroUsuarioService;
 
     @PostMapping
-    public String salvarCadastroUsuario(@RequestBody @NotNull CadastroUsuario cadastroUsuario) {
+    public String salvarCadastroUsuario(@RequestBody @NotBlank CadastroUsuario cadastroUsuario) {
         CadastroUsuario cadastroUsuarioBD =
                 cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getLoginEmail());
         if (cadastroUsuarioBD != null) {

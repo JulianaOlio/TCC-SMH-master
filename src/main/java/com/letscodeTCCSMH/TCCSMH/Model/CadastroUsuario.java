@@ -5,6 +5,7 @@ import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 
@@ -17,7 +18,7 @@ public class CadastroUsuario {
     //inserir anotacao @NotBlank
     //ibernate validation
 
-    @NotNull("E-mail é obrigatório")
+    @NotBlank(message = "E-mail é obrigatório")
     private String loginEmail;
     @NotNull("Nome completo é obrigatório")
     private String nomeCompleto;
