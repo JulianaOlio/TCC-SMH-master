@@ -2,6 +2,7 @@ package com.letscodeTCCSMH.TCCSMH.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +16,16 @@ public class CadastroUsuario {
     @Column(unique = true)
     //inserir anotacao @NotBlank
     //ibernate validation
+
+    @NotNull("E-mail é obrigatório")
     private String loginEmail;
+    @NotNull("Nome completo é obrigatório")
     private String nomeCompleto;
+    @NotNull("Codigo Funcional é obrigatório")
     private String codigoFuncional;
+
+    @NotNull("Telefone é obrigatório")
     private String telefone; //verificar se precisa uma classe apartada do telefone. se criar a lista precisaremos criar classe telefone
-
-
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
