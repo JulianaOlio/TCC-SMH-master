@@ -8,9 +8,12 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    private String iniciado;
+    private String emAndamento;
+    private String cancelado;
+    private String concluido;
 
-    @OneToOne
+    @ManyToOne
     private Requisicao requisicao;
 
     public Integer getId() {
@@ -21,11 +24,28 @@ public class Status {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getIniciado() {
+        return iniciado;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIniciado(String iniciado) {
+        this.iniciado = iniciado;
+    }
+    public String getEmAndamento() {
+        return emAndamento;
+    }
+    public void setEmAndamento(String emAndamento) {
+        this.emAndamento = emAndamento;
+    }
+    public String getCancelado() {
+        return cancelado;
+    }
+    public void setCancelado(String cancelado) {
+        this.cancelado = cancelado;
+    }
+    public String getConcluido() {
+        return concluido;
+    }
+    public void setConcluido(String concluido) {
+        this.concluido = concluido;
     }
 }

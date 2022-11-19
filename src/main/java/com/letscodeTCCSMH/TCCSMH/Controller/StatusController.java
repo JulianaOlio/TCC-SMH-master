@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.SecureRandomParameters;
+import java.util.List;
 
 @RestController
 @RequestMapping("/status")
@@ -39,6 +40,11 @@ public class StatusController {
             return "Status excluído com sucesso!";
         }
         return "Status não encontrado.";
+    }
+    @GetMapping
+    public List<Status> statusList(
+            @RequestParam(name = "Status das Requisições", required = false) String status) {
+        return StatusService.listarStatus(status);
     }
     }
 

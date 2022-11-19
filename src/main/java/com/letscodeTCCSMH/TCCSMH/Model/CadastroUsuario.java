@@ -18,14 +18,17 @@ public class CadastroUsuario {
     //inserir anotacao @NotBlank
     //ibernate validation
 
+    @Email
     @NotBlank(message = "E-mail é obrigatório")
     private String loginEmail;
-    @NotNull("Nome completo é obrigatório")
+
+    @NotBlank(message ="Nome completo é obrigatório")
     private String nomeCompleto;
-    @NotNull("Codigo Funcional é obrigatório")
+
+    @NotBlank(message ="Codigo Funcional é obrigatório")
     private String codigoFuncional;
 
-    @NotNull("Telefone é obrigatório")
+    @NotBlank(message ="Telefone é obrigatório")
     private String telefone; //verificar se precisa uma classe apartada do telefone. se criar a lista precisaremos criar classe telefone
 
     @OneToOne(cascade = CascadeType.PERSIST)

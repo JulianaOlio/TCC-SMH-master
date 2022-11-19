@@ -19,32 +19,18 @@ public class CadastroUsuarioController {
 
     @PostMapping
     public String salvarCadastroUsuario(@RequestBody @NotBlank CadastroUsuario cadastroUsuario) {
-        CadastroUsuario cadastroUsuarioBD =
-                cadastroUsuarioService.buscarCadastroUsuario(cadastroUsuario.getLoginEmail());
-        if (cadastroUsuarioBD != null) {
-            return "E-mail já cadastrado.";
-        }
-
-        cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
-        return "Cadastro realizado com sucesso!";
+         cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
+                return "Cadastro realizado com sucesso!";
     }
 
     //localhost:8080/usuario/?loginEmail
-    //Esse getMappig com filtro "/" é possivel
-    //filtra o usuario com um email especifico.
-    //Usamos o RequestParam para ficar mais certo o filtro.
-    @GetMapping("/")
+        @GetMapping("/")
     public CadastroUsuario buscaCadastroUsuario(@RequestParam("loginEmail") String loginEmail ){
         return cadastroUsuarioService.buscarCadastroUsuario(loginEmail);
     }
 
     //localhost:8080/usuario/buscarPorNome?nomeCompleto=Jao
-    //Esse getMappig com filtro "/" é possivel
-    //filtra o usuario com um nome completo especifico.
-    //Usamos o RequestParam para ficar mais certo o filtro.
-
-    //ver com o profe para colocar esses dois getMapping juntos com condicao ou para nao ficar muito repetitivo
-    @GetMapping("/buscarPorNome")
+     @GetMapping("/buscarPorNome")
     public CadastroUsuario buscaCadastroPorNome(@RequestParam("nomeCompleto") String nomeCompleto){
         return cadastroUsuarioService.buscarCadastroPorNome(nomeCompleto);
     }

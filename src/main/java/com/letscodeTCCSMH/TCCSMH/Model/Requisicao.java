@@ -16,7 +16,7 @@ public class Requisicao {
     private String motivo;
     private String headset;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "status_id")
     private Status status; // verificar se criamos a lista
 
