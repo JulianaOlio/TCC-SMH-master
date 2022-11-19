@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
+import javax.validation.constraints.Email;
 
 
 @Entity

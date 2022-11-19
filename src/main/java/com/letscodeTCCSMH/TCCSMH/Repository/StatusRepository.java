@@ -7,8 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StatusRepository extends JpaRepository<Status,Integer> {
 
-   Status findByInciado(String status);
-   Status findByEmAndamento(String status);
-   Status findByCancelado(String status);
-   Status findByConcluido(String status);
+     Status findByIniciado(String iniciado);
 }

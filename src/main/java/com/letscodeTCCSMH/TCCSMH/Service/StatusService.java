@@ -17,6 +17,7 @@ public class StatusService {
     public void salvarStatus(Status status) {
         statusRepository.save(status);
     }
+
     public Status buscarStatus(String status) {
         return statusRepository.findByIniciado(status);
     }
@@ -32,7 +33,7 @@ public class StatusService {
     }
 
     public boolean excluirStatus(String status) {
-        Status statusAtual = statusRepository.findByInciado(status);
+        Status statusAtual = statusRepository.findByIniciado(status);
         if (statusAtual != null) {
             statusRepository.delete(statusAtual);
             return true;
@@ -40,9 +41,11 @@ public class StatusService {
         return false;
     }
 
-    public List<Status> listarStatus(String Status) {
-        if (iniciado != null) {
-            return statusRepository.findByAll();
+    public List<Status> listarStatus(String status) {
+        if (status != null) {
+            return statusRepository.findByIniciado();
+        } else {
+            return statusRepository.findAll();
         }
-        }
+    }
 }

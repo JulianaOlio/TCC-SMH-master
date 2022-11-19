@@ -1,4 +1,4 @@
-package com.letscodeTCCSMH.TCCSMH.Controller;
+'package com.letscodeTCCSMH.TCCSMH.Controller;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Model.Status;
@@ -46,5 +46,6 @@ public class StatusController {
             @RequestParam(name = "Status das Requisições", required = false) String status) {
         return StatusService.listarStatus(status);
     }
+    
     }
 
