@@ -1,4 +1,4 @@
-'package com.letscodeTCCSMH.TCCSMH.Controller;
+package com.letscodeTCCSMH.TCCSMH.Controller;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Model.Status;
@@ -6,12 +6,11 @@ import com.letscodeTCCSMH.TCCSMH.Service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.SecureRandomParameters;
 import java.util.List;
 
 @RestController
 @RequestMapping("/status")
-public class StatusController {
+public class StatusController{
 
     @Autowired
     private StatusService statusService;
@@ -44,8 +43,10 @@ public class StatusController {
     @GetMapping
     public List<Status> statusList(
             @RequestParam(name = "Status das Requisições", required = false) String status) {
-        return StatusService.listarStatus(status);
+        return statusService.listarStatus(status);
     }
-    
-    }
+}
+
+
+
 

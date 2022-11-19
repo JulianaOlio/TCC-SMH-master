@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StatusService {
+public class StatusService{
 
     @Autowired
     private StatusRepository statusRepository;
