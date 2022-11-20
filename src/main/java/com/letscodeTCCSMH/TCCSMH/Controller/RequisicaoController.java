@@ -5,6 +5,7 @@ import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
 import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
 import com.letscodeTCCSMH.TCCSMH.Service.RequisicaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,16 +26,13 @@ public class RequisicaoController {
     public List<Requisicao> listaRequisicao() {
         return requisicaoService.listarRequisicoes();
     }
-
-    @DeleteMapping("/{excluirRequisicao}")
-    public String deletaRequisica(@PathVariable("excluirRequisicao") Integer id) {
-        boolean excluirRequisicao = requisicaoService.excluirRequisicao(id);
-        if (excluirRequisicao) {
-            return "Requisicao excluida com sucesso";
+    @DeleteMapping
+        public ResponseEntity<Object> deletaRequisicao(@PathVariable(value = "excluirRequisicao") Integer id) throws Exception {
+            requisicaoService.excluirRequisicao(id);
+            return ResponseEntity.noContent().build();
         }
-        return "Requisicao não encontrada";
     }
-}
+
 
 
 

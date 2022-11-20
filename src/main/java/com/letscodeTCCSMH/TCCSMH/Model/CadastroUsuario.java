@@ -11,13 +11,12 @@ import javax.validation.constraints.Email;
 
 
 @Entity
+@Table(name="Cadastro_Usuários")
 public class CadastroUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
-    //inserir anotacao @NotBlank
-    //ibernate validation
 
     @Email
     @NotBlank(message = "E-mail é obrigatório")
@@ -35,9 +34,8 @@ public class CadastroUsuario {
     @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
 
-
     @OneToOne
-    @JoinColumn(name = "id_perfil_acesso")
+    @JoinColumn(name = "idPerfilAcesso")
     @JsonIgnore
     private PerfilAcesso perfilAcesso;
 

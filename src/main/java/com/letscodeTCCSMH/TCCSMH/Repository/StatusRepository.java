@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface StatusRepository extends JpaRepository<Status,Integer> {
 
-     Status findByIniciado(String iniciado);
+      List<Status> findAll();
 
-     List<Status> findAll();
+    Status findByStatus(String status);
 }

@@ -1,15 +1,16 @@
 package com.letscodeTCCSMH.TCCSMH.Service;
 
-import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
+import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
 import com.letscodeTCCSMH.TCCSMH.Model.Status;
 import com.letscodeTCCSMH.TCCSMH.Repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Service
-public class StatusService{
+public class StatusService {
 
     @Autowired
     private StatusRepository statusRepository;
@@ -19,33 +20,17 @@ public class StatusService{
     }
 
     public Status buscarStatus(String status) {
-        return statusRepository.findByIniciado(status);
+        return statusRepository.findByStatus(status);
     }
 
-    public boolean atualizarStatus(String iniciado, Status status) {
-        Status statusBD = statusRepository.findByIniciado(iniciado);
-        if (status != null) {
-            statusBD.setIniciado(status.getEmAndamento());
-            statusRepository.save(status);
-            return true;
+    public void deletarStatus(Integer id) throws Exception {
+        Optional<Status> statusAtual = statusRepository.findById(id);
+        if (statusAtual.isEmpty()) {
+            throw new Exception("Status não localizado");
         }
-        return false;
-    }
+        statusRepository.deleteById(id);
+            }
 
-    public boolean excluirStatus(String status) {
-        Status statusAtual = statusRepository.findByIniciado(status);
-        if (statusAtual != null) {
-            statusRepository.delete(statusAtual);
-            return true;
-        }
-        return false;
-    }
 
-    public List<Status> listarStatus(String status) {
-        if (status != null) {
-            return statusRepository.findByIniciado();
-        } else {
-            return statusRepository.findAll();
-        }
-    }
 }
+

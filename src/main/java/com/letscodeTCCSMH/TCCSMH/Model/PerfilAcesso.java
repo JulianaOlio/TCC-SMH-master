@@ -5,6 +5,7 @@ import com.letscodeTCCSMH.TCCSMH.Service.RequisicaoService;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "perfil_acesso")
 public class PerfilAcesso {
@@ -19,8 +20,8 @@ public class PerfilAcesso {
     @OneToOne
     private CadastroUsuario cadastroUsuario;
 
-    @OneToOne
-    private Requisicao requisicao;
+    @OneToMany
+    private Set<Requisicao> requisicoes;
 
     public Integer getIdPerfilAcesso() {
         return idPerfilAcesso;

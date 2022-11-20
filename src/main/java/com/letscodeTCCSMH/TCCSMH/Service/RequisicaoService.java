@@ -20,13 +20,12 @@ public class RequisicaoService {
     public List<Requisicao> listarRequisicoes() {
         return requisicaoRepository.findAll();
     }
-    public boolean excluirRequisicao(Integer id) {
-        Optional<Requisicao> requisicao = requisicaoRepository.findById(id);
-        if (requisicao != null) {
-            requisicaoRepository.findById(id);
-            return true;
+    public void excluirRequisicao(Integer id)  throws Exception {
+        var requisicao = requisicaoRepository.findById(id);
+        if (requisicao.isEmpty()){
+            throw new Exception("Usuário não localizado");
         }
-        return false;
+        requisicaoRepository.deleteById(id);
     }
     }
 

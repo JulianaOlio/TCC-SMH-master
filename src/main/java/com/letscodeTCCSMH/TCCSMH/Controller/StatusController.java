@@ -4,8 +4,10 @@ import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Model.Status;
 import com.letscodeTCCSMH.TCCSMH.Service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,28 +26,13 @@ public class StatusController{
     public Status buscaStatus(@RequestParam("status") String status){
         return statusService.buscarStatus(status);
     }
-    @PutMapping("/atualizaStatus/?")
-    public String atualizaStatus(@RequestParam("atualizarStatus") String atualizaStatus,@RequestBody Status Status) {
-        boolean atualizar = statusService.atualizarStatus(atualizaStatus, Status);
-        if (atualizar) {
-            return "Status atualizado com sucesso";
-        }
-        return "Status não encontrado";
+
+    @DeleteMapping("/{excluiStatus}")
+    public ResponseEntity<Object> deletaStatus(@PathVariable (value = "excluiStatus")Integer id) throws Exception {
+        statusService.deletarStatus(id);
+            return ResponseEntity.noContent().build();
     }
-    @DeleteMapping("/excluiStatus")
-    public String deletaStatus(@RequestBody String status) {
-        boolean statusDeletado = statusService.excluirStatus(status);
-        if (statusDeletado) {
-            return "Status excluído com sucesso!";
-        }
-        return "Status não encontrado.";
-    }
-    @GetMapping
-    public List<Status> statusList(
-            @RequestParam(name = "Status das Requisições", required = false) String status) {
-        return statusService.listarStatus(status);
-    }
-}
+   }
 
 
 

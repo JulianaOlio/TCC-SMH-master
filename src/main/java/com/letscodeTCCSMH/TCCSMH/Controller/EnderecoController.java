@@ -6,6 +6,7 @@ import com.letscodeTCCSMH.TCCSMH.Service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping
-    public Endereco salvaEndereco(@RequestBody Endereco endereco) {
+    public Endereco salvaEndereco(@RequestBody @NotBlank Endereco endereco) {
         return enderecoService.salvarEndereco(endereco);
     }
 

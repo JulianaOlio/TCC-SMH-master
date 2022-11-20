@@ -1,6 +1,7 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
 import lombok.Data;
+import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,17 +17,15 @@ public class Requisicao {
     private String motivo;
     private String headset;
 
-    @OneToMany
-    @JoinColumn(name = "status_id")
-    private Status status; // verificar se criamos a lista
 
     @OneToOne
     @JoinColumn(name = "status_requisicao_id")
     private Status statusRequisicao;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn
     private PerfilAcesso perfilAcesso;
+
     @ManyToOne
     @JoinColumn(name = "dados_solicitante")
     private CadastroUsuario cadastroUsuario;
@@ -69,14 +68,6 @@ public class Requisicao {
 
     public void setHeadset(String headset) {
         this.headset = headset;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public Status getStatusRequisicao() {
