@@ -1,7 +1,6 @@
 package com.letscodeTCCSMH.TCCSMH.Controller;
 
 
-import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
 import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
 import com.letscodeTCCSMH.TCCSMH.Service.RequisicaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,16 @@ public class RequisicaoController {
     public List<Requisicao> listaRequisicao() {
         return requisicaoService.listarRequisicoes();
     }
+
+    @PutMapping("/{atualizaRequisicao}")
+    public String atualizaRequisicao(@PathVariable Integer id, @RequestBody Requisicao requisicao) {
+        boolean atualizando = requisicaoService.atualizarRequisicao(id, requisicao);
+        if (atualizando) {
+            return "Requisicao do usuário atualizado com sucesso";
+        }
+        return "Requisicao do usuário não encontrado";
+    }
+
     @DeleteMapping
         public ResponseEntity<Object> deletaRequisicao(@PathVariable(value = "excluirRequisicao") Integer id) throws Exception {
             requisicaoService.excluirRequisicao(id);

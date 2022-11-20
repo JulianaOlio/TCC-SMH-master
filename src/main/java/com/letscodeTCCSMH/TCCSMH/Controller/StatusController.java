@@ -1,6 +1,7 @@
 package com.letscodeTCCSMH.TCCSMH.Controller;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
+import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
 import com.letscodeTCCSMH.TCCSMH.Model.Status;
 import com.letscodeTCCSMH.TCCSMH.Service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,25 @@ public class StatusController{
         return statusService.buscarStatus(status);
     }
 
+    @PutMapping("/atualizarStatus")
+    public String atualizaStatus(@RequestParam ("atualizastatus") String status, @RequestBody Status statusAtual) {
+        boolean atualizado = statusService.atualizarStatus(status, statusAtual);
+        if (atualizado) {
+            return "Status requisição atualizado com sucesso";
+        }
+        return "Status requisição não localizado";
+    }
     @DeleteMapping("/{excluiStatus}")
     public ResponseEntity<Object> deletaStatus(@PathVariable (value = "excluiStatus")Integer id) throws Exception {
         statusService.deletarStatus(id);
             return ResponseEntity.noContent().build();
     }
-   }
+    @GetMapping("/")
+    public List<Status> listaStatus() {
+        return statusService.listarStatus();
+    }
+
+}
 
 
 

@@ -14,7 +14,6 @@ public class CadastroUsuarioService {
     @Autowired
     private CadastroUsuarioRepository cadastroUsuarioRepository;
 
-
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
         cadastroUsuarioRepository.save(cadastroUsuario);
     }

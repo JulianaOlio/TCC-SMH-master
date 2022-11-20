@@ -1,10 +1,13 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jdk.jshell.Snippet;
 import lombok.Data;
 import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -12,8 +15,18 @@ public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime dataInicio;
-    private LocalDateTime dataFinal;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dataInicial;
+
+    @JsonFormat(pattern = "HH:MM")
+    private LocalTime horarioInicial;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dataFinal;
+
+    @JsonFormat(pattern = "HH:MM")
+    private LocalTime horarioFinal;
+
     private String motivo;
     private String headset;
 
@@ -30,6 +43,10 @@ public class Requisicao {
     @JoinColumn(name = "dados_solicitante")
     private CadastroUsuario cadastroUsuario;
 
+    @ManyToOne
+    @JoinColumn(name = "permissao")
+    private Permissao permissao;
+
     public Integer getId() {
         return id;
     }
@@ -38,20 +55,36 @@ public class Requisicao {
         this.id = id;
     }
 
-    public LocalDateTime getDataInicio() {
-        return dataInicio;
+    public LocalDate getDataInicial() {
+        return dataInicial;
     }
 
-    public void setDataInicio(LocalDateTime dataInicio) {
-        this.dataInicio = dataInicio;
+    public void setDataInicial(LocalDate dataInicial) {
+        this.dataInicial = dataInicial;
     }
 
-    public LocalDateTime getDataFinal() {
+    public LocalTime getHorarioInicial() {
+        return horarioInicial;
+    }
+
+    public void setHorarioInicial(LocalTime horarioInicial) {
+        this.horarioInicial = horarioInicial;
+    }
+
+    public LocalDate getDataFinal() {
         return dataFinal;
     }
 
-    public void setDataFinal(LocalDateTime dataFinal) {
+    public void setDataFinal(LocalDate dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    public LocalTime getHorarioFinal() {
+        return horarioFinal;
+    }
+
+    public void setHorarioFinal(LocalTime horarioFinal) {
+        this.horarioFinal = horarioFinal;
     }
 
     public String getMotivo() {
@@ -92,5 +125,13 @@ public class Requisicao {
 
     public void setCadastroUsuario(CadastroUsuario cadastroUsuario) {
         this.cadastroUsuario = cadastroUsuario;
+    }
+
+    public Permissao getPermissao() {
+        return permissao;
+    }
+
+    public void setPermissao(Permissao permissao) {
+        this.permissao = permissao;
     }
 }
