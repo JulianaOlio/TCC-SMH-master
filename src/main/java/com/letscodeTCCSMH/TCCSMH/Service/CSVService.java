@@ -40,7 +40,6 @@ public class CSVService {
                 listaCSV.printRecord(
                         requisicao.getCadastroUsuario().getNomeCompleto(),
                         requisicao.getCadastroUsuario().getEndereco(),
-                        requisicao.getStatusRequisicao(),
                         requisicao.getPerfilAcesso());
             }
         } catch (IOException e) {

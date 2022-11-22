@@ -31,9 +31,10 @@ public class Requisicao {
     private String headset;
 
 
-    @OneToOne
-    @JoinColumn(name = "status_requisicao_id")
-    private Status statusRequisicao;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Status_requisicao_id")
+    private StatusEnum status;
+
 
     @ManyToOne
     @JoinColumn
@@ -103,13 +104,6 @@ public class Requisicao {
         this.headset = headset;
     }
 
-    public Status getStatusRequisicao() {
-        return statusRequisicao;
-    }
-
-    public void setStatusRequisicao(Status statusRequisicao) {
-        this.statusRequisicao = statusRequisicao;
-    }
 
     public PerfilAcesso getPerfilAcesso() {
         return perfilAcesso;

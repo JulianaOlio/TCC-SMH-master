@@ -1,6 +1,5 @@
 package com.letscodeTCCSMH.TCCSMH.Service;
 
-import com.letscodeTCCSMH.TCCSMH.Model.Status;
 import com.letscodeTCCSMH.TCCSMH.Repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

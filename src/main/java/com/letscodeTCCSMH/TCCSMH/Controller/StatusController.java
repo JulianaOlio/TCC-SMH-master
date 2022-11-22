@@ -1,14 +1,10 @@
 package com.letscodeTCCSMH.TCCSMH.Controller;
 
-import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
-import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
-import com.letscodeTCCSMH.TCCSMH.Model.Status;
 import com.letscodeTCCSMH.TCCSMH.Service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController

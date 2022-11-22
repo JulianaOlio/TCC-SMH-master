@@ -1,7 +1,5 @@
 package com.letscodeTCCSMH.TCCSMH.Repository;
 
-import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
-import com.letscodeTCCSMH.TCCSMH.Model.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
