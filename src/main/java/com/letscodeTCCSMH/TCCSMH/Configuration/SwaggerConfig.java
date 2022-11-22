@@ -35,6 +35,5 @@ public class SwaggerConfig  implements WebMvcConfigurer {
                         .licenseUrl ("http://www.apache.org/licenses/LICENSES-2.0.html")
                         .build ();
     }
-
     }
 

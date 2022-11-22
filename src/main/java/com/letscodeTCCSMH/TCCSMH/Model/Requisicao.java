@@ -26,7 +26,6 @@ public class Requisicao {
 
     @JsonFormat(pattern = "HH:MM")
     private LocalTime horarioFinal;
-
     private String motivo;
     private String headset;
 
@@ -34,7 +33,6 @@ public class Requisicao {
     @Enumerated(EnumType.STRING)
     @Column(name = "Status_requisicao_id")
     private StatusEnum status;
-
 
     @ManyToOne
     @JoinColumn

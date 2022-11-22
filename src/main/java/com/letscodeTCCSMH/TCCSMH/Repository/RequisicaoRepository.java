@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RequisicaoRepository extends JpaRepository<Requisicao,Integer>{
 
-
-    Requisicao findByRequisicao(Integer id);
 }

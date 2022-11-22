@@ -2,38 +2,45 @@ package com.letscodeTCCSMH.TCCSMH.Service;
 
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
+import com.letscodeTCCSMH.TCCSMH.Model.Permissao;
 import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
 import com.letscodeTCCSMH.TCCSMH.Repository.RequisicaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RequisicaoService {
     @Autowired
     private RequisicaoRepository requisicaoRepository;
 
-    @Autowired
-    private CadastroUsuario cadastroUsuario;
-
     public void salvarRequisicao(Requisicao requisicao) {
         requisicaoRepository.save(requisicao);
     }
+    public Requisicao buscarRequisicao(Integer id) {
+        var buscaRequisicao = requisicaoRepository.findById(id);
+        if (buscaRequisicao.isEmpty()) {
+            throw new IllegalArgumentException("permissao não encontrado!");
+        }
+        return buscaRequisicao.get();
+    }
+
     public List<Requisicao> listarRequisicoes() {
         return requisicaoRepository.findAll();
     }
 
     public boolean atualizarRequisicao(Integer id, Requisicao requisicao) {
-        Requisicao requisicaoBD = requisicaoRepository.findByRequisicao(id);
-        if (requisicao!=null) {
-            requisicaoBD.setId(requisicao.getId());
-            requisicaoBD.setDataInicial(requisicao.getDataInicial());
-            requisicaoBD.setDataFinal(requisicao.getDataFinal());
-            requisicaoBD.setHorarioInicial(requisicao.getHorarioInicial());
-            requisicaoBD.setHorarioFinal(requisicao.getHorarioFinal());
-            requisicaoBD.setMotivo(requisicao.getMotivo());
-            requisicaoBD.setHeadset(requisicao.getHeadset());
-           requisicaoRepository.save(requisicao);
+        Optional<Requisicao> requisicaoBD = requisicaoRepository.findById(id);
+        if (requisicaoBD.isPresent()) {
+            requisicao.setId(requisicao.getId());
+            requisicao.setDataInicial(requisicao.getDataInicial());
+            requisicao.setDataFinal(requisicao.getDataFinal());
+            requisicao.setHorarioInicial(requisicao.getHorarioInicial());
+            requisicao.setHorarioFinal(requisicao.getHorarioFinal());
+            requisicao.setMotivo(requisicao.getMotivo());
+            requisicao.setHeadset(requisicao.getHeadset());
+                   requisicaoRepository.save(requisicao);
             return true;
         }
         return false;

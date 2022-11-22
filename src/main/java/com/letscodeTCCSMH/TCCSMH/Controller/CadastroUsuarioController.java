@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CadastroUsuarioController {
     private CadastroUsuarioService cadastroUsuarioService;
 
     @PostMapping
-    public String salvarCadastroUsuario(@RequestBody @NotBlank CadastroUsuario cadastroUsuario) {
+    public String salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
          cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
                 return "Cadastro realizado com sucesso!";
     }

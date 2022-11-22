@@ -1,6 +1,9 @@
 package com.letscodeTCCSMH.TCCSMH.Service;
 
+import com.letscodeTCCSMH.TCCSMH.Controller.PermissaoController;
+import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Model.Permissao;
+import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
 import com.letscodeTCCSMH.TCCSMH.Repository.PermissaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,18 @@ public class PermissaoService {
         }
         return buscaPermissao.get();
     }
+
+    public boolean atualizarPermissao (String nomePermissao, Permissao permissao) {
+        Permissao permissaoDB = permissaoRepository.findByNomePermissao(nomePermissao);
+        if (permissao != null) {
+            permissaoDB.setCodigoPermissao(permissao.getCodigoPermissao());
+            permissaoDB.setNomePermissao(permissao.getNomePermissao());
+            permissaoRepository.save(permissao);
+            return true;
+        }
+        return false;
+    }
+
 
     public void excluirPermissao(Integer codigoPermissao)  throws Exception {
         var permissao = permissaoRepository.findById(codigoPermissao);

@@ -29,8 +29,6 @@ public class CSVService {
     @Autowired
     public RequisicaoRepository requisicaoRepository;
 
-    @Autowired
-    public StatusRepository statusRepository;
 
     public void writeRelatorioRequisicaoParaCSV (Writer writer) throws Exception {
         List<Requisicao> listaRequisicao = requisicaoRepository.findAll();
