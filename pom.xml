@@ -12,8 +12,8 @@
 	<artifactId>TCC-SMH</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TCC-SMH</name>
-	<description>Demo project for Spring boot</description>
-		<properties>
+	<description>Demo project for Spring Boot</description>
+	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
