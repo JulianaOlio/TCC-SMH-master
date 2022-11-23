@@ -15,45 +15,25 @@ import java.util.List;
 public class CSVService {
 
     @Autowired
-    public CadastroUsuarioRepository cadastroUsuarioRepository;
-
-    @Autowired
-    public EnderecoRepository enderecoRepository;
-
-    @Autowired
-    public PerfilAcessoRepository perfilAcessoRepository;
-
-    @Autowired
-    public PermissaoRepository permissaoRepository;
-
-    @Autowired
     public RequisicaoRepository requisicaoRepository;
 
 
     public void writeRelatorioRequisicaoParaCSV (Writer writer) throws Exception {
         List<Requisicao> listaRequisicao = requisicaoRepository.findAll();
         try (CSVPrinter listaCSV = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
-            listaCSV.printRecord("CadastroUsuario", "Endereco", "Requisicao", "PerfilAcesso");
+            listaCSV.printRecord("Usuario", "Endereco", "DataInicial","DataFinal","Motivo", "Status");
             for (Requisicao requisicao : listaRequisicao) {
                 listaCSV.printRecord(
                         requisicao.getCadastroUsuario().getNomeCompleto(),
                         requisicao.getCadastroUsuario().getEndereco(),
-                        requisicao.getPerfilAcesso());
-            }
+                        requisicao.getDataInicial(),
+                        requisicao.getDataFinal(),
+                        requisicao.getMotivo(),
+                        requisicao.getStatus());
+
+         }
         } catch (IOException e) {
             throw new Exception("Erro para criar CSV", e);
         }
-
-        /*
-        OutputStream agendaCsv = new FileOutputStream("/Users/jully/Documents/listaCSV.csv");
-
-        Writer escritorAgenda = new PrintWriter(new OutputStreamWriter(listaRequisicao, StandardCharsets.UTF_8), true);
-        escritorAgenda.write(listaRequisicao.toString());
-        escritorAgenda.close();
-
-        System.out.println(listaRequisicao);
-
-    }
-    */
-    }
+            }
 }

@@ -1,8 +1,10 @@
 package com.letscodeTCCSMH.TCCSMH.Service;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
+import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
 import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
 import com.letscodeTCCSMH.TCCSMH.Repository.EnderecoRepository;
+import com.letscodeTCCSMH.TCCSMH.Repository.RequisicaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,17 @@ public class CadastroUsuarioService {
     @Autowired
     private CadastroUsuarioRepository cadastroUsuarioRepository;
 
+
+    @Autowired
+    private RequisicaoService requisicaoService;
+
+    @Autowired
+    private RequisicaoRepository requisicaoRepository;
+
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
         cadastroUsuarioRepository.save(cadastroUsuario);
     }
-
-    public CadastroUsuario buscarCadastroPorNome(String nomeCompleto) {
+     public CadastroUsuario buscarCadastroPorNome(String nomeCompleto) {
         return cadastroUsuarioRepository.findByNomeCompleto(nomeCompleto);
 
     }

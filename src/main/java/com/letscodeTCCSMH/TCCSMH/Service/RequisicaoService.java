@@ -2,8 +2,11 @@ package com.letscodeTCCSMH.TCCSMH.Service;
 
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
+import com.letscodeTCCSMH.TCCSMH.Model.PerfilAcesso;
 import com.letscodeTCCSMH.TCCSMH.Model.Permissao;
 import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
+import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
+import com.letscodeTCCSMH.TCCSMH.Repository.PerfilAcessoRepository;
 import com.letscodeTCCSMH.TCCSMH.Repository.RequisicaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +18,22 @@ public class RequisicaoService {
     @Autowired
     private RequisicaoRepository requisicaoRepository;
 
+    @Autowired
+    private PerfilAcessoRepository perfilAcessoRepository;
+
+    @Autowired
+    private PerfilAcessoService perfilAcessoService;
+
+    @Autowired
+    private CadastroUsuarioService cadastroUsuarioService;
+
+    @Autowired
+    private CadastroUsuarioRepository cadastroUsuarioRepository;
+
     public void salvarRequisicao(Requisicao requisicao) {
         requisicaoRepository.save(requisicao);
     }
-    public Requisicao buscarRequisicao(Integer id) {
+       public Requisicao buscarRequisicao(Integer id) {
         var buscaRequisicao = requisicaoRepository.findById(id);
         if (buscaRequisicao.isEmpty()) {
             throw new IllegalArgumentException("permissao não encontrado!");
@@ -32,7 +47,7 @@ public class RequisicaoService {
 
     public boolean atualizarRequisicao(Integer id, Requisicao requisicao) {
         Optional<Requisicao> requisicaoBD = requisicaoRepository.findById(id);
-        if (requisicaoBD.isPresent()) {
+        if (requisicaoBD.isEmpty()) {
             requisicao.setId(requisicao.getId());
             requisicao.setDataInicial(requisicao.getDataInicial());
             requisicao.setDataFinal(requisicao.getDataFinal());

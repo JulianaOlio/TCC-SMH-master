@@ -30,6 +30,7 @@ public class Requisicao {
     private String headset;
 
 
+
     @Enumerated(EnumType.STRING)
     @Column(name = "Status_requisicao_id")
     private StatusEnum status;
@@ -125,5 +126,14 @@ public class Requisicao {
 
     public void setPermissao(Permissao permissao) {
         this.permissao = permissao;
+    }
+
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 }

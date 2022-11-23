@@ -25,7 +25,7 @@ public class PerfilAcessoController {
         return perfilAcessoService.buscarPerfilAcesso(nome);
     }
       @PutMapping("/{nome}")
-    public String atualizaPerfilAcesso(@PathVariable String nome, @RequestBody PerfilAcesso perfilAcesso) {
+      public String atualizaPerfilAcesso(@PathVariable String nome, @RequestBody PerfilAcesso perfilAcesso) {
         boolean atualizado = perfilAcessoService.atualizarPerfilAcesso(nome, perfilAcesso);
         if (atualizado) {
             return "Perfil de acesso atualizado com sucesso";
