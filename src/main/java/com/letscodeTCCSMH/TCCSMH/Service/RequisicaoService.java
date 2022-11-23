@@ -18,17 +18,6 @@ public class RequisicaoService {
     @Autowired
     private RequisicaoRepository requisicaoRepository;
 
-    @Autowired
-    private PerfilAcessoRepository perfilAcessoRepository;
-
-    @Autowired
-    private PerfilAcessoService perfilAcessoService;
-
-    @Autowired
-    private CadastroUsuarioService cadastroUsuarioService;
-
-    @Autowired
-    private CadastroUsuarioRepository cadastroUsuarioRepository;
 
     public void salvarRequisicao(Requisicao requisicao) {
         requisicaoRepository.save(requisicao);
