@@ -15,7 +15,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 @EnableWebMvc
-
 public class SwaggerConfig  implements WebMvcConfigurer {
 
     @Bean

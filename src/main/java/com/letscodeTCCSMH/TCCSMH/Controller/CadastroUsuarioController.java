@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/usuario")
 public class CadastroUsuarioController {
@@ -21,11 +20,11 @@ public class CadastroUsuarioController {
     @PostMapping
     public String salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
          cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
-                return "Cadastro realizado com sucesso!";
+         return "Cadastro realizado com sucesso!";
     }
 
     //localhost:8080/usuario/?loginEmail
-        @GetMapping("/")
+    @GetMapping("/")
     public CadastroUsuario buscaCadastroUsuario(@RequestParam("loginEmail") String loginEmail ){
         return cadastroUsuarioService.buscarCadastroUsuario(loginEmail);
     }

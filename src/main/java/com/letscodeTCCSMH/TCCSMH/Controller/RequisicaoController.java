@@ -21,6 +21,7 @@ public class RequisicaoController {
         requisicaoService.salvarRequisicao(requisicao);
         return "Requisicao salva com sucesso";
     }
+
     @GetMapping
     public List<Requisicao> listaRequisicao() {
         return requisicaoService.listarRequisicoes();
@@ -36,13 +37,15 @@ public class RequisicaoController {
     }
 
     @DeleteMapping
-        public ResponseEntity<Object> deletaRequisicao(@PathVariable(value = "excluirRequisicao") Integer id) throws Exception {
-            requisicaoService.excluirRequisicao(id);
-            return ResponseEntity.noContent().build();
-        }
+    public ResponseEntity<Requisicao> deletaRequisicao(@PathVariable(value = "excluirRequisicao") Integer id) throws Exception {
+        requisicaoService.excluirRequisicao(id);
+        return ResponseEntity.noContent().build();
     }
 
+  //  @GetMapping(="/CSVrequisicao")
+   // public ResponseEntity<Requisicao> csvRequisicao()
 
+}
 
 
 

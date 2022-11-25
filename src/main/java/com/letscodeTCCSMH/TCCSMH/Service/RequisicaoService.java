@@ -22,6 +22,7 @@ public class RequisicaoService {
     public void salvarRequisicao(Requisicao requisicao) {
         requisicaoRepository.save(requisicao);
     }
+
        public Requisicao buscarRequisicao(Integer id) {
         var buscaRequisicao = requisicaoRepository.findById(id);
         if (buscaRequisicao.isEmpty()) {
@@ -36,14 +37,14 @@ public class RequisicaoService {
 
     public boolean atualizarRequisicao(Integer id, Requisicao requisicao) {
         Optional<Requisicao> requisicaoBD = requisicaoRepository.findById(id);
-        if (requisicaoBD.isEmpty()) {
+        if (!requisicaoBD.isEmpty()) {
             requisicao.setId(requisicao.getId());
             requisicao.setDataInicial(requisicao.getDataInicial());
             requisicao.setDataFinal(requisicao.getDataFinal());
             requisicao.setHorarioInicial(requisicao.getHorarioInicial());
             requisicao.setHorarioFinal(requisicao.getHorarioFinal());
             requisicao.setMotivo(requisicao.getMotivo());
-            requisicao.setHeadset(requisicao.getHeadset());
+            requisicao.setHeadSet(requisicao.getHeadSet());
                    requisicaoRepository.save(requisicao);
             return true;
         }

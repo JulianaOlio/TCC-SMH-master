@@ -27,8 +27,6 @@ public class Requisicao {
     @JsonFormat(pattern = "HH:MM")
     private LocalTime horarioFinal;
     private String motivo;
-    private String headset;
-
 
 
     @Enumerated(EnumType.STRING)
@@ -43,10 +41,9 @@ public class Requisicao {
     @JoinColumn(name = "dados_solicitante")
     private CadastroUsuario cadastroUsuario;
 
-    @ManyToOne
-    @JoinColumn(name = "permissao")
-    private Permissao permissao;
-
+    @OneToOne
+    @JoinColumn(name = "headset")
+    private HeadSet headSet;
     public Integer getId() {
         return id;
     }
@@ -95,15 +92,6 @@ public class Requisicao {
         this.motivo = motivo;
     }
 
-    public String getHeadset() {
-        return headset;
-    }
-
-    public void setHeadset(String headset) {
-        this.headset = headset;
-    }
-
-
     public PerfilAcesso getPerfilAcesso() {
         return perfilAcesso;
     }
@@ -120,15 +108,6 @@ public class Requisicao {
         this.cadastroUsuario = cadastroUsuario;
     }
 
-    public Permissao getPermissao() {
-        return permissao;
-    }
-
-    public void setPermissao(Permissao permissao) {
-        this.permissao = permissao;
-    }
-
-
     public StatusEnum getStatus() {
         return status;
     }
@@ -136,4 +115,12 @@ public class Requisicao {
     public void setStatus(StatusEnum status) {
         this.status = status;
     }
-}
+    public HeadSet getHeadSet() {
+        return headSet;
+    }
+
+    public void setHeadSet(HeadSet headSet) {
+        this.headSet = headSet;
+    }
+
+   }
