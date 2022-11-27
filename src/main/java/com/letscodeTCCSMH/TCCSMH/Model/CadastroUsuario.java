@@ -1,36 +1,40 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
-import org.jetbrains.annotations.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
+import java.util.Set;
 import javax.validation.constraints.Email;
 
-
+@Data
 @Entity
-@Table(name="Cadastro_Usuários")
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
 public class CadastroUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
 
+    @Column(unique = true)
     @Email
     @NotBlank(message = "E-mail é obrigatório")
     private String loginEmail;
-
     @NotBlank(message ="Nome completo é obrigatório")
     private String nomeCompleto;
 
+    @Column(unique = true)
     @NotBlank(message ="Codigo Funcional é obrigatório")
     private String codigoFuncional;
 
     @NotBlank(message ="Telefone é obrigatório")
     private String telefone;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
     @OneToOne
@@ -41,63 +45,10 @@ public class CadastroUsuario {
 
     @OneToMany(mappedBy = "cadastroUsuario")
     @JsonIgnore
-    private List<Requisicao> requisicoes;
+    private Set<Requisicao> requisicoes;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLoginEmail() {
-        return loginEmail;
-    }
-
-    public void setLoginEmail(String loginEmail) {
-        this.loginEmail = loginEmail;
-    }
-
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public String getCodigoFuncional() {
-        return codigoFuncional;
-    }
-
-    public void setCodigoFuncional(String codigoFuncional) {
-        this.codigoFuncional = codigoFuncional;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public PerfilAcesso getPerfilAcesso() {
-        return perfilAcesso;
-    }
-
-    public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
-        this.perfilAcesso = perfilAcesso;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
+    @OneToOne
+    @JoinColumn
+    private HeadSet headSet;
 
 }

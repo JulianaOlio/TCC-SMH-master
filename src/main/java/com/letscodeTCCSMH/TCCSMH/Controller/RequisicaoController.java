@@ -2,11 +2,14 @@ package com.letscodeTCCSMH.TCCSMH.Controller;
 
 
 import com.letscodeTCCSMH.TCCSMH.Model.Requisicao;
+import com.letscodeTCCSMH.TCCSMH.Service.CSVService;
 import com.letscodeTCCSMH.TCCSMH.Service.RequisicaoService;
+import org.hibernate.loader.plan.build.internal.CascadeStyleLoadPlanBuildingAssociationVisitationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -15,6 +18,9 @@ public class RequisicaoController {
 
     @Autowired
     public RequisicaoService requisicaoService;
+
+    @Autowired
+    public CSVService csvService;
 
     @PostMapping
     public String salvaRequisicao(@RequestBody Requisicao requisicao) {
@@ -42,8 +48,12 @@ public class RequisicaoController {
         return ResponseEntity.noContent().build();
     }
 
-  //  @GetMapping(="/CSVrequisicao")
-   // public ResponseEntity<Requisicao> csvRequisicao()
+  @GetMapping("/relatorioRequisicao")
+   public void buscarRelatorioCSV(HttpServletResponse servletResponse) throws Exception{
+        servletResponse.setContentType("texto/csv");
+        servletResponse.addHeader("Content-Disposition","attachment; filename=\"relatorioGeral.csv\"");
+        csvService.writeRelatorioRequisicaoParaCSV(servletResponse.getWriter());
+  }
 
 }
 

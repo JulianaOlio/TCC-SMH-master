@@ -6,7 +6,7 @@ import com.letscodeTCCSMH.TCCSMH.Service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,17 +17,16 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping
-    public Endereco salvaEndereco(@RequestBody @NotBlank Endereco endereco) {
+    public Endereco salvaEndereco(@RequestBody @Valid Endereco endereco) {
         return enderecoService.salvarEndereco(endereco);
     }
 
     //Verificar para retornar o endereco quando faz a chamada.
-    @GetMapping("/")
+    @GetMapping
     public List<Endereco> buscaEndereco() {
         return enderecoService.listaEndereco();
     }
 
-    //deu erro no Postman, verificar depois.
     @PutMapping("/atualizaCep")
     public String atualizaEndereco(@RequestParam(name = "atualizaCep") String cep, @RequestBody Endereco endereco) {
         boolean atualizar = enderecoService.atualizarEndereco(cep, endereco);

@@ -2,15 +2,21 @@ package com.letscodeTCCSMH.TCCSMH.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jdk.jshell.Snippet;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
 @Data
+@Entity
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
 public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,83 +50,5 @@ public class Requisicao {
     @OneToOne
     @JoinColumn(name = "headset")
     private HeadSet headSet;
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public LocalDate getDataInicial() {
-        return dataInicial;
-    }
-
-    public void setDataInicial(LocalDate dataInicial) {
-        this.dataInicial = dataInicial;
-    }
-
-    public LocalTime getHorarioInicial() {
-        return horarioInicial;
-    }
-
-    public void setHorarioInicial(LocalTime horarioInicial) {
-        this.horarioInicial = horarioInicial;
-    }
-
-    public LocalDate getDataFinal() {
-        return dataFinal;
-    }
-
-    public void setDataFinal(LocalDate dataFinal) {
-        this.dataFinal = dataFinal;
-    }
-
-    public LocalTime getHorarioFinal() {
-        return horarioFinal;
-    }
-
-    public void setHorarioFinal(LocalTime horarioFinal) {
-        this.horarioFinal = horarioFinal;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
-
-    public PerfilAcesso getPerfilAcesso() {
-        return perfilAcesso;
-    }
-
-    public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
-        this.perfilAcesso = perfilAcesso;
-    }
-
-    public CadastroUsuario getCadastroUsuario() {
-        return cadastroUsuario;
-    }
-
-    public void setCadastroUsuario(CadastroUsuario cadastroUsuario) {
-        this.cadastroUsuario = cadastroUsuario;
-    }
-
-    public StatusEnum getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-    public HeadSet getHeadSet() {
-        return headSet;
-    }
-
-    public void setHeadSet(HeadSet headSet) {
-        this.headSet = headSet;
-    }
 
    }
