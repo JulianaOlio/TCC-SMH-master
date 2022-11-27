@@ -16,25 +16,30 @@ import javax.validation.constraints.Email;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
+@Table(name="CadastroUsuario")
 public class CadastroUsuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(name = "Email",unique = true)
     @Email
-    @NotBlank(message = "E-mail é obrigatório")
+    @NotBlank(message = "O E-mail é obrigatório")
     private String loginEmail;
-    @NotBlank(message ="Nome completo é obrigatório")
+
+    @Column(name = "nomeCompleto", unique = true)
+    @NotBlank(message ="O Nome Completo é obrigatório")
     private String nomeCompleto;
 
-    @Column(unique = true)
-    @NotBlank(message ="Codigo Funcional é obrigatório")
+    @Column(name = "codigoFuncional", unique = true)
+    @NotBlank(message ="O Codigo Funcional é obrigatório")
     private String codigoFuncional;
 
-    @NotBlank(message ="Telefone é obrigatório")
+    @Column(name = "telefonePrincipal")
+    @NotBlank(message ="O Telefone é obrigatório")
     private String telefone;
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Endereco endereco;
 
     @OneToOne

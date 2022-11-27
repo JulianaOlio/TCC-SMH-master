@@ -3,10 +3,15 @@ package com.letscodeTCCSMH.TCCSMH.Controller;
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Service.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpOutputMessage;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/usuario")
@@ -21,8 +26,9 @@ public class CadastroUsuarioController {
          return "Cadastro realizado com sucesso!";
     }
 
+
     //localhost:8080/usuario/?loginEmail
-    @GetMapping("/")
+    @GetMapping
     public CadastroUsuario buscaCadastroUsuario(@RequestParam("loginEmail") String loginEmail ){
         return cadastroUsuarioService.buscarCadastroUsuario(loginEmail);
     }

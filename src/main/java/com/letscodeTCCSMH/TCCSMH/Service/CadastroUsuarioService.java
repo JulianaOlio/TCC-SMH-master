@@ -17,7 +17,7 @@ public class CadastroUsuarioService {
     @Autowired
     private RequisicaoRepository requisicaoRepository;
     public void salvarCadastroUsuario(CadastroUsuario cadastroUsuario) {
-        cadastroUsuarioRepository.save(cadastroUsuario);
+      cadastroUsuarioRepository.save(cadastroUsuario);
     }
      public CadastroUsuario buscarCadastroPorNome(String nomeCompleto) {
         return cadastroUsuarioRepository.findByNomeCompleto(nomeCompleto);
