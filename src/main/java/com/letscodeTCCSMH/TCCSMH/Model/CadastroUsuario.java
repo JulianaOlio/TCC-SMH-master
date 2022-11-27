@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.Set;
 import javax.validation.constraints.Email;
 
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -56,4 +57,6 @@ public class CadastroUsuario {
     @JoinColumn
     private HeadSet headSet;
 
+    public CadastroUsuario(CadastroUsuario usuario) {
+    }
 }
