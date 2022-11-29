@@ -3,6 +3,7 @@ package com.letscodeTCCSMH.TCCSMH.Controller;
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Service.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
@@ -15,9 +16,9 @@ public class CadastroUsuarioController {
     private CadastroUsuarioService cadastroUsuarioService;
 
     @PostMapping
-    public String salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
+    public ResponseEntity<String> salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
       cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
-      return "Cadastro realizado com sucesso!";
+      return ResponseEntity.status(201).body("Cadastro relizado com Sucesso");
    }
 
      //localhost:8080/usuario/?loginEmail
