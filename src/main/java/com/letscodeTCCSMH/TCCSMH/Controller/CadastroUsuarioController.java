@@ -2,6 +2,7 @@ package com.letscodeTCCSMH.TCCSMH.Controller;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Service.CadastroUsuarioService;
+import com.letscodeTCCSMH.TCCSMH.dto.AlterarUsuarioDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class CadastroUsuarioController {
     @PostMapping
     public ResponseEntity<String> salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
       cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
-      return ResponseEntity.status(201).body("Cadastro relizado com Sucesso");
+      return ResponseEntity.status(201).body("Cadastro realizado com Sucesso");
    }
 
      //localhost:8080/usuario/?loginEmail
@@ -33,16 +34,20 @@ public class CadastroUsuarioController {
         return cadastroUsuarioService.buscarCadastroPorNome(nomeCompleto);
     }
 
+
+    //localhost:8080/usuario/juliana@bradesco.com.br (aqui sao os dados salvos ja no banco de dados)
+    //no body vai a informacao que queremos trocar.
     @PutMapping("/{loginEmail}")
-    public String atualizaCadastroUsuario(@PathVariable String loginEmail, @RequestBody CadastroUsuario cadastroUsuario) {
-        boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(loginEmail, cadastroUsuario);
+    public String atualizaCadastroUsuario(@PathVariable String loginEmail, @RequestBody AlterarUsuarioDto dto) {
+        boolean atualizado = cadastroUsuarioService.atualizarCadastroUsuario(loginEmail, dto);
         if (atualizado) {
         return "Cadastro do usuário atualizado com sucesso";
     }
         return "Cadastro do usuário não encontrado";
     }
 
-    @DeleteMapping("/nomeCompleto")
+    //http://localhost:8080/usuario?nomeCompleto=Juliana
+    @DeleteMapping
     public String deletaCadastroUsuario(@RequestParam("nomeCompleto") String nomeCompleto) {
         boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(nomeCompleto);
         if (deletado) {
