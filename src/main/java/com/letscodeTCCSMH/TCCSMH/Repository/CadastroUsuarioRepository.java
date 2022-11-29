@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface CadastroUsuarioRepository extends CrudRepository<CadastroUsuario,Long> {
 
+
     CadastroUsuario findBycodigoFuncional(String codigoFuncional);
     List<CadastroUsuario> findAll();
     CadastroUsuario findByLoginEmail(String loginEmail);

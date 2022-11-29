@@ -14,8 +14,8 @@ public class CadastroUsuarioController {
     @Autowired
     private CadastroUsuarioService cadastroUsuarioService;
 
-  @PostMapping
-   public String salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
+    @PostMapping
+    public String salvarCadastroUsuario(@RequestBody @Valid CadastroUsuario cadastroUsuario) {
       cadastroUsuarioService.salvarCadastroUsuario(cadastroUsuario);
       return "Cadastro realizado com sucesso!";
    }
@@ -41,9 +41,9 @@ public class CadastroUsuarioController {
         return "Cadastro do usuário não encontrado";
     }
 
-    @DeleteMapping("/{loginEmail}")
-    public String deletaCadastroUsuario(@PathVariable String loginEmail) {
-        boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(loginEmail);
+    @DeleteMapping("/nomeCompleto")
+    public String deletaCadastroUsuario(@RequestParam("nomeCompleto") String nomeCompleto) {
+        boolean deletado = cadastroUsuarioService.excluirCadastroUsuario(nomeCompleto);
         if (deletado) {
             return "Cadastro do usuário excluído com sucesso!";
         }

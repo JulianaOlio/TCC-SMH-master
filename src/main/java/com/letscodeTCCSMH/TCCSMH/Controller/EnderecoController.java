@@ -1,6 +1,5 @@
 package com.letscodeTCCSMH.TCCSMH.Controller;
 
-import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Model.Endereco;
 import com.letscodeTCCSMH.TCCSMH.Service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +16,15 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping
-    public Endereco salvaEndereco(@RequestBody @Valid Endereco endereco) {
-        return enderecoService.salvarEndereco(endereco);
+    public Endereco salvandoEndereco(@RequestBody @Valid Endereco endereco) {
+        return enderecoService.salvaEndereco(endereco);
     }
 
     //Verificar para retornar o endereco quando faz a chamada.
     @GetMapping
-    public List<Endereco> buscaEndereco() {
+    public List<Endereco> buscaListaEndereco() {
         return enderecoService.listaEndereco();
     }
-
     @PutMapping("/atualizaCep")
     public String atualizaEndereco(@RequestParam(name = "atualizaCep") String cep, @RequestBody Endereco endereco) {
         boolean atualizar = enderecoService.atualizarEndereco(cep, endereco);

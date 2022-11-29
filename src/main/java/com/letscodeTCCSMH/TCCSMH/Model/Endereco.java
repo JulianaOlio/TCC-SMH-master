@@ -42,10 +42,10 @@ public class Endereco {
     @NotBlank(message = "Estado é obrigatório")
     private String estado;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "id_cadastro_usuario")
     @JsonIgnore
-    private CadastroUsuario cadastroUsuario;
+    private CadastroUsuario cadastroUsuario;*/
 
 
 }

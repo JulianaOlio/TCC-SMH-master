@@ -2,12 +2,13 @@ package com.letscodeTCCSMH.TCCSMH.Service;
 
 import com.letscodeTCCSMH.TCCSMH.Model.CadastroUsuario;
 import com.letscodeTCCSMH.TCCSMH.Repository.CadastroUsuarioRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CadastroUsuarioService {
     @Autowired
@@ -28,7 +29,6 @@ public class CadastroUsuarioService {
         CadastroUsuario cadastroUsuarioBD = cadastroUsuarioRepository.findByLoginEmail(loginEmail);
         if (cadastroUsuario != null) {
             cadastroUsuarioBD.setNomeCompleto(cadastroUsuario.getNomeCompleto());
-            cadastroUsuarioBD.setCodigoFuncional(cadastroUsuario.getCodigoFuncional());
             cadastroUsuarioBD.setEndereco(cadastroUsuario.getEndereco());
             cadastroUsuarioBD.setTelefone(cadastroUsuario.getTelefone());
             cadastroUsuarioRepository.save(cadastroUsuario);
@@ -37,8 +37,8 @@ public class CadastroUsuarioService {
         return false;
     }
 
-    public boolean excluirCadastroUsuario(String loginEmail) {
-        CadastroUsuario cadastroUsuario = cadastroUsuarioRepository.findBycodigoFuncional(loginEmail);
+    public boolean excluirCadastroUsuario(String nomeCompleto) {
+        CadastroUsuario cadastroUsuario = cadastroUsuarioRepository.findByNomeCompleto(nomeCompleto);
         if (cadastroUsuario != null) {
             cadastroUsuarioRepository.delete(cadastroUsuario);
             return true;

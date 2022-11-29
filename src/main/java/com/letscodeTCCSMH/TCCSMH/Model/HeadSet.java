@@ -29,7 +29,8 @@ public class HeadSet {
     @JoinColumn
     private Requisicao requisicao;
 
-    @OneToOne
+    /* @OneToOne
     @JoinColumn
-    private CadastroUsuario cadastroUsuario;
+    private CadastroUsuario cadastroUsuario;*/
+
  }

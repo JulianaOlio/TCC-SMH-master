@@ -1,5 +1,6 @@
 package com.letscodeTCCSMH.TCCSMH.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.letscodeTCCSMH.TCCSMH.Service.RequisicaoService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,11 +26,13 @@ public class PerfilAcesso {
     private Boolean master;
 
 
-    @OneToOne
-    private CadastroUsuario cadastroUsuario;
+    /*@OneToOne
+    private CadastroUsuario cadastroUsuario;*/
 
-    @OneToMany
-    private Set<Requisicao> requisicoes;
+
+    @OneToMany(mappedBy = "cadastroUsuario")
+    @JsonIgnore
+    private Set<Requisicao> perfilAcessos;
 
 
 }

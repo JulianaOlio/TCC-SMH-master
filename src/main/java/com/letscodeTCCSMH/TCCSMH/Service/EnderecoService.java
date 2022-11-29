@@ -13,12 +13,11 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    // @Autowired
-    //private CadastroUsuarioRepository cadastroUsuarioRepository;
 
-    public Endereco salvarEndereco(Endereco endereco) {
+    public Endereco salvaEndereco(Endereco endereco) {
         return enderecoRepository.save(endereco);
     }
+
     public Endereco buscarEndereco(String endereco) {
         return enderecoRepository.findByCep(endereco);
     }
