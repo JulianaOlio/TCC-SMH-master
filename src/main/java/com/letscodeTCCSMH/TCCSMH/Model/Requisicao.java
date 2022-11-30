@@ -19,6 +19,8 @@ public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String numeroRequisicao;
+
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataInicial;
 

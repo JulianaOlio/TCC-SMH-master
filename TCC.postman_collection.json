@@ -7,49 +7,332 @@
 	},
 	"item": [
 		{
-			"name": "Criar cadastro",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"loginEmail\": \"thais@bradesco.com.br\",\r\n    \"nomeCompleto\": \"Thais Machado\",\r\n    \"codigoFuncional\": \"11111\",\r\n    \"telefone\":\"9999999\",\r\n    \"endereco\": {\r\n        \"cep\":\"8175980\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "CadastroUsuarioController",
+			"item": [
+				{
+					"name": "Criar novo usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"loginEmail\": \"Rafa@bradesco.com.br\",\r\n    \"nomeCompleto\": \"Rafa Hil\",\r\n    \"codigoFuncional\": \"6543\",\r\n    \"telefone\":\"99999999\",\r\n    \"endereco\": {\r\n           \"tipoLogradouro\": \"Rua\",\r\n            \"logradouro\": \"two\",\r\n            \"numero\": \"3\",\r\n            \"cep\": \"81760-234\",\r\n            \"complemento\": \"casa A\",\r\n            \"bairro\": \"Mar\",\r\n            \"cidade\": \"Curitiba\",\r\n            \"estado\": \"Parana\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8080/cadastro",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"cadastro"
-					]
+				{
+					"name": "Listar usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuario por email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuario/thais@bradesco.com.br",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"thais@bradesco.com.br"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar usuario por nome completo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/usuario/buscaPorNome/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"buscaPorNome",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar cadastro",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir cadastro",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Listar cadastro",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/cadastro",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"cadastro"
-					]
+			"name": "EnderecoController",
+			"item": [
+				{
+					"name": "Criar endereco",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoLogradouro\": \"rua\",\r\n    \"logradouro\":\"da Paz\",\r\n    \"numero\": \"1\",\r\n    \"complemento\":\"casa 01\",\r\n    \"cep\": \"01234345\",\r\n    \"bairro\": \"saudade\",\r\n    \"cidade\": \"osasco\",\r\n    \"estado\": \"sp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar endereço",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza endereco",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir endereco",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "HeadSetController",
+			"item": [
+				{
+					"name": "Criar headset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroAntigoHeadSet\": \"111\",\r\n    \"numeroNovoHeadSet\": \"222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/headset",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"headset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar headset",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/headset",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"headset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Headset",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir headset",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PerfilAcessoController",
+			"item": [
+				{
+					"name": "Criar acesso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Ana Paula\",\r\n    \"master\": \"sim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/perfil_acesso",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"perfil_acesso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar perfil por nome",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar perfil acesso",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir perfil acesso por nome",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RequisicaoController",
+			"item": [
+				{
+					"name": "Criar Requisicao",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Listar requisicao",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar relatorio csv",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza requisicao",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir requisicao",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

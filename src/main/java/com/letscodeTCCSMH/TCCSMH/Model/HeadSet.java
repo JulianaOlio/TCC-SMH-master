@@ -19,11 +19,11 @@ public class HeadSet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Número do Antigo HeadSet para manutenção é obrigatório")
-    private String numeroAntigoHeadSet;
+    @NotBlank(message = "Número do HeadSet para manutenção é obrigatório!")
+    private String numeroHeadSet;
 
-    @NotBlank(message = "Número do Nono HeadSet para substituição é obrigatório")
-    private String numeroNovoHeadSet;
+//    @NotBlank(message = "Número do Nono HeadSet para substituição é obrigatório!")
+//    private String numeroNovoHeadSet;
 
     @OneToOne
     @JoinColumn

@@ -26,7 +26,6 @@ public class PerfilAcessoService {
         PerfilAcesso perfilAcessoBD = perfilAcessoRepository.findByNome(nome);
         if (perfilAcesso != null) {
             perfilAcessoBD.setNome(perfilAcessoBD.getNome());
-            perfilAcessoBD.setDescricao(perfilAcessoBD.getDescricao());
             perfilAcessoRepository.save(perfilAcessoBD);
             return true;
         }

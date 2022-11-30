@@ -25,20 +25,22 @@ public class EnderecoController {
     public List<Endereco> buscaListaEndereco() {
         return enderecoService.listaEndereco();
     }
-    @PutMapping("/atualizaCep")
-    public String atualizaEndereco(@RequestParam(name = "atualizaCep") String cep, @RequestBody Endereco endereco) {
+    //localhost:8080/endereco?atualizaCep=111 (esse 111 é o CEP que queremos alterar)
+    @PutMapping
+    public String atualizaEndereco(@RequestParam("atualizaCep") String cep, @RequestBody Endereco endereco) {
         boolean atualizar = enderecoService.atualizarEndereco(cep, endereco);
         if (atualizar) {
-            return "Endereço atualizado com sucesso";
+            return "Endereço atualizado com sucesso!";
         }
         return "Endereço não encontrado";
     }
 
-    @DeleteMapping("/{excluirEndereco}")
-    public String deletaEndereco(@PathVariable("excluirEndereco") String cep) {
+    //http://localhost:8080/endereco?cep=111
+    @DeleteMapping
+    public String deletaEndereco(@RequestParam("cep") String cep) {
         boolean deletar = enderecoService.excluirEndereco(cep);
         if (deletar) {
-      return "Endereço excluido com sucesso";
+      return "Endereço excluído com sucesso!";
     }
         return "Endereço não localizado";
 }

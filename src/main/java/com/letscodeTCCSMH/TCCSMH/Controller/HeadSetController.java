@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/headset")
@@ -18,31 +20,36 @@ public class HeadSetController {
     @Autowired
     private HeadSetService headSetService;
 
+    //localhost:8080/headset
     @PostMapping
     public String salvaHeadSet(@RequestBody HeadSet headSet){
         headSetService.salvarHeadSet(headSet);
-        return "HeadSet salvo com sucesso";
+        return "HeadSet salvo com sucesso!";
     }
 
-    @GetMapping("/buscarHeadSet")
-    public HeadSet buscaHeadSet(@RequestParam("id") Integer id){
-        return headSetService.buscarHeadSet(id);
+    //localhost:8080/headset
+    @GetMapping
+    public List<HeadSet> buscaListaHeadSet() {
+        return headSetService.listaHeadSet();
     }
 
-
-    @PutMapping
-    public ResponseEntity<Object> atualizaHeadSet(@RequestParam Integer id, HeadSet headSet) throws Exception {
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body("Altualizando HeadSet" + headSetService
-                        .atualizarHeadSet(id, headSet).getRequisicao().getCadastroUsuario() +
-                        "alterado para " + headSet);
-
-    }
-        @DeleteMapping
-    public ResponseEntity<HeadSet> deletaHeadSet(@PathVariable(value = "excluirHeadSet") Integer id) throws Exception {
-        headSetService.excluiHeadSet(id);
-        return ResponseEntity.noContent().build();
-    }
+    //localhost:8080/headset?AtualizaHeadSet=111
+//    @PutMapping
+//    public String atualizarHeadSet(@RequestParam("atualiza") String numero, @RequestBody HeadSet headSet) {
+//        boolean atualizar = headSetService.atualizarHeadSet(numero, headSet);
+//        if (atualizar) {
+//            return "headSet atualizado com sucesso!";
+//        }
+//        return "headSet não encontrado!";
+//    }
+//
+//
+//    //localhost:8080/headset?Excluir=111
+//    @DeleteMapping
+//    public ResponseEntity<HeadSet> deletaHeadSet(@RequestParam("Excluir") String numeroHeasSet) throws Exception {
+//        headSetService.excluiHeadSet(Integer.valueOf(numeroHeasSet));
+//        return ResponseEntity.noContent().build();
+//    }
 }
 
 

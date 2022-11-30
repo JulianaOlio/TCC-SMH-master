@@ -22,7 +22,6 @@ public class PerfilAcesso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPerfilAcesso;
     private String nome;
-    private String descricao;
     private Boolean master;
 
 

@@ -22,15 +22,23 @@ public class RequisicaoController {
     @Autowired
     public CSVService csvService;
 
+    //localhost:8080/requisicao
     @PostMapping
     public String salvaRequisicao(@RequestBody Requisicao requisicao) {
         requisicaoService.salvarRequisicao(requisicao);
-        return "Requisicao salva com sucesso";
+        return "Requisicao salva com sucesso!";
     }
 
     @GetMapping
     public List<Requisicao> listaRequisicao() {
         return requisicaoService.listarRequisicoes();
+    }
+
+    @GetMapping("/relatorioRequisicao")
+    public void buscarRelatorioCSV(HttpServletResponse servletResponse) throws Exception{
+        servletResponse.setContentType("texto/csv");
+        servletResponse.addHeader("Content-Disposition","attachment; filename=\"relatorioGeral.csv\"");
+        csvService.writeRelatorioRequisicaoParaCSV(servletResponse.getWriter());
     }
 
     @PutMapping("/{atualizaRequisicao}")
@@ -48,12 +56,7 @@ public class RequisicaoController {
         return ResponseEntity.noContent().build();
     }
 
-  @GetMapping("/relatorioRequisicao")
-   public void buscarRelatorioCSV(HttpServletResponse servletResponse) throws Exception{
-        servletResponse.setContentType("texto/csv");
-        servletResponse.addHeader("Content-Disposition","attachment; filename=\"relatorioGeral.csv\"");
-        csvService.writeRelatorioRequisicaoParaCSV(servletResponse.getWriter());
-  }
+
 
 }
 
