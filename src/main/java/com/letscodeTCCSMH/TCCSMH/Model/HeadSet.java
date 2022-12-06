@@ -22,15 +22,10 @@ public class HeadSet {
     @NotBlank(message = "Número do HeadSet para manutenção é obrigatório!")
     private String numeroHeadSet;
 
-//    @NotBlank(message = "Número do Nono HeadSet para substituição é obrigatório!")
-//    private String numeroNovoHeadSet;
 
     @OneToOne
     @JoinColumn
     private Requisicao requisicao;
 
-    /* @OneToOne
-    @JoinColumn
-    private CadastroUsuario cadastroUsuario;*/
 
  }

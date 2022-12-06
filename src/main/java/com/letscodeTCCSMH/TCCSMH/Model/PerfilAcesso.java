@@ -24,11 +24,6 @@ public class PerfilAcesso {
     private String nome;
     private Boolean master;
 
-
-    /*@OneToOne
-    private CadastroUsuario cadastroUsuario;*/
-
-
     @OneToMany(mappedBy = "cadastroUsuario")
     @JsonIgnore
     private Set<Requisicao> perfilAcessos;
