@@ -19,6 +19,8 @@ public class Requisicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+
     private String numeroRequisicao;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -32,6 +34,7 @@ public class Requisicao {
 
     @JsonFormat(pattern = "HH:MM")
     private LocalTime horarioFinal;
+
     private String motivo;
 
 

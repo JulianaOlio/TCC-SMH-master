@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class PerfilAcesso {
+public class PerfilAcesso { 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPerfilAcesso;
